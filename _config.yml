@@ -1,12 +1,10 @@
 title: Ravi Bhandia # your name (or website title) here
 logo: "images/Ravi_LinkedinPhoto.jpg" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
-Hi! I'm Ravi. Welcome to my website! I'm a californian born and raised (never lived anywhere else). I'm passionate about the environment, education equality, and finance.
-I recently graduated from UC Berkeley with a Masters in Operations Research where I had the opportunity to learn and practice data science and product skills. 
-I completed my bachelors at USC in Chemical Engineering with a minor in Business Finance.
+Hi! I'm Ravi. Welcome to my website! I'm a californian born and raised (never lived anywhere else). I'm passionate about the environment, education equality, and finance. I recently graduated from UC Berkeley with a Masters in Operations Research where I had the opportunity to learn and practice data science and product skills. I completed my bachelors at USC in Chemical Engineering with a minor in Business Finance.
 <br><br>
-  Here are a selection of projects that I would like to share with you!
-  <br><br>
+Here are a selection of projects that I would like to share with you!
+<br><br>
   <a href="https://www.linkedin.com/in/ravibhandia/">View My LinkedIn Profile</a> 
   
 theme: jekyll-theme-minimal
