@@ -1,29 +1,35 @@
-## About Me
+## Education
 
 ---
+- UC Berkeley, Berkeley, CA 08/2019-05/2020
+• Masters of Engineering in Industrial Engineering and Operations Research (ML/AI track)
 
 
+- University of Southern California, Los Angeles, CA 08/2014 – 05/2018 
+• Bachelor of Science in Chemical Engineering (Sustainable Energy), Minor: Business Finance; Renaissance Scholar
+
+
+
+## Work Experience
+
+PepsiCo
 
 ## Projects
 
 ---
-
-### Projects
 
 [Historical analysis and live anomaly detection on Ripple's Blockchain](/Ripple)
 <img src="images/Ripple-1.png?raw=true"/>
 
 ---
 [Power from the People - Characterizing Energy Use](/pdf/242_Final_Project_Presentation.pdf)
-<img src="EnergyUseCharacterized.png?raw=true"/>
+<img src="images/EnergyUseCharacterized.png?raw=true"/>
 
 ---
 [Anchain.ai Bot Detection](http://example.com/)
 <img src="images/EnergyUseCharacterized.png?raw=true"/>
 
 ---
-
-### Product/Business Work
 
 - [MyFridge-Let your fridge become MyFridge](http://example.com/)
 - [DearDuck Market Tests](http://example.com/)
