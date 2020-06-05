@@ -12,7 +12,13 @@
 
 ## Work Experience
 
-PepsiCo
+- Data Science Intern @ [PostRoad Foundation](https://www.postroadfoundation.org)
+
+- Supply Chain Leader @ [PepsiCo](https://www.pepsico.com)
+
+- Process Engineering Intern @ [Sila Nanotechnologies](https://silanano.com)
+
+
 
 ## Projects
 
