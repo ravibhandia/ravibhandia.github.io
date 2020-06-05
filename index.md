@@ -1,26 +1,32 @@
-## Portfolio
+## About Me
 
 ---
 
-### End to End Machine Learning Projects
 
-[Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
----
-[Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
-
----
-[Project 3 Title](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+## Projects
 
 ---
 
-### Product/ Business
+### Projects
 
-- [Project 1 Title](http://example.com/)
-- [Project 2 Title](http://example.com/)
+[Historical analysis and live anomaly detection on Ripple's Blockchain](/Ripple)
+<img src="images/Ripple-1.png?raw=true"/>
+
+---
+[Power from the People - Characterizing Energy Use](/pdf/242_Final_Project_Presentation.pdf)
+<img src="EnergyUseCharacterized.png?raw=true"/>
+
+---
+[Anchain.ai Bot Detection](http://example.com/)
+<img src="images/EnergyUseCharacterized.png?raw=true"/>
+
+---
+
+### Product/Business Work
+
+- [MyFridge-Let your fridge become MyFridge](http://example.com/)
+- [DearDuck Market Tests](http://example.com/)
 - [Project 3 Title](http://example.com/)
 - [Project 4 Title](http://example.com/)
 - [Project 5 Title](http://example.com/)
