@@ -2,12 +2,15 @@
 
 ---
 - UC Berkeley, Berkeley, CA 08/2019-05/2020
+<br>
 • Masters of Engineering in Industrial Engineering and Operations Research (ML/AI track)
+<br />
 
 
 - University of Southern California, Los Angeles, CA 08/2014 – 05/2018 
+<br>
 • Bachelor of Science in Chemical Engineering (Sustainable Energy), Minor: Business Finance; Renaissance Scholar
-
+<br />
 
 
 ## Work Experience
