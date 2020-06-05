@@ -4,7 +4,6 @@
 - UC Berkeley, Berkeley, CA 08/2019-05/2020
 <br>
 • Masters of Engineering in Industrial Engineering and Operations Research (ML/AI track)
-<br />
 
 
 - University of Southern California, Los Angeles, CA 08/2014 – 05/2018 
@@ -19,8 +18,13 @@
 
 - Supply Chain Leader @ [PepsiCo](https://www.pepsico.com)
 
+- Business Analyst Intern @ [Troy Capital Partners](https://www.troycapitalpartners.com)
+
 - Process Engineering Intern @ [Sila Nanotechnologies](https://silanano.com)
 
+- Chemical Engineering Intern @ [Kinestral Technologies](https://www.kinestral.com)
+
+- Research Assistant @ [USC Malancha Gupta Polymer Engineering Lab](https://guptapolymerslab.usc.edu)
 
 
 ## Projects
@@ -35,7 +39,7 @@
 <img src="images/EnergyUseCharacterized.png?raw=true"/>
 
 ---
-[Anchain.ai Bot Detection](http://example.com/)
+[Anchain.ai Bot Detection](/Anchain)
 <video src="videos/anchaindemo.mov" name="Anchain.ai Demo" width='500' height="375" autoplay>
     </video>
 
