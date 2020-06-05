@@ -36,7 +36,8 @@
 
 ---
 [Anchain.ai Bot Detection](http://example.com/)
-<img src="images/EnergyUseCharacterized.png?raw=true"/>
+<video controls="controls" width="800" height="600" 
+       name="Video Name" src="videos/anchaindemo.mov"></video>
 
 ---
 
