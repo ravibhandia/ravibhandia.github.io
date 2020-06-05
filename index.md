@@ -46,8 +46,6 @@ Github repo is found [here](https://github.com/ravibhandia/PowerfromthePeople)
 [Anchain.ai Bot Detection](/Anchain)
 <video loop src="videos/anchaindemo.mov" name="Anchain.ai Demo" width='500' height="375" autoplay>
     </video>
-
-
 Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
 
