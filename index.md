@@ -36,7 +36,7 @@
 
 ---
 [Anchain.ai Bot Detection](http://example.com/)
-<video controls="controls" width="800" height="600" 
+<video controls="controls" width="400" height="300" 
        name="Video Name" src="videos/anchaindemo.mov"></video>
 
 ---
