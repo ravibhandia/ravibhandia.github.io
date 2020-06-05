@@ -25,6 +25,6 @@ For more information on the technique and learnings go [here](https://www.linked
 
 
 
-The github repo can be found [here](https://github.com/ravibhandia/anchain_ai_datax)
+Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
 

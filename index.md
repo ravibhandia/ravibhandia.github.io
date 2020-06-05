@@ -48,7 +48,7 @@ Github repo is found [here](https://github.com/ravibhandia/PowerfromthePeople)
     </video>
 
 
-Github repo is found [here](https://github.com/ravibhandia/PowerfromthePeople)
+Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
 
 ---
