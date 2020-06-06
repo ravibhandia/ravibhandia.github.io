@@ -1,3 +1,10 @@
+# Personal Website
+
+## About Me
+
+Growing up in the bay area, I was witness to the ambitions and the 
+
+
 ## Education
 
 ---
@@ -9,10 +16,11 @@
 - University of Southern California, Los Angeles, CA 08/2014 – 05/2018 
 <br>
 • Bachelor of Science in Chemical Engineering (Sustainable Energy), Minor: Business Finance; Renaissance Scholar
-<br />
 
 
-## Work Experience
+## Experience
+
+- Data Scientist/Product Manager, UC Berkeley Capstone Team @ [Ripple](https://ripple.com)
 
 - Data Science Intern @ [PostRoad Foundation](https://www.postroadfoundation.org)
 
@@ -48,10 +56,16 @@ Github repo is found [here](https://github.com/ravibhandia/PowerfromthePeople)
     </video>
 Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
+---
+[Mad Politics] (/Mad_Politics)
+
 
 ---
 
-- [MyFridge-Let your fridge become MyFridge](http://example.com/)
+[MyFridge-Product Management](/MyFridge)
+
+
+
 - [DearDuck Market Tests](http://example.com/)
 - [Project 3 Title](http://example.com/)
 - [Project 4 Title](http://example.com/)

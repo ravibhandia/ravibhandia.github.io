@@ -13,3 +13,5 @@ Multiple other metrics including churn rate of the network could be forecasted a
 <p align='center'>
     <img src="images/Capstone_Brief.png?raw=true"/>
 </p>
+
+Github repo is found [here](https://github.com/ravibhandia/XRPLordsRemastered)
