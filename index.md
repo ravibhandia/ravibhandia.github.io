@@ -57,7 +57,7 @@ Github repo is found [here](https://github.com/ravibhandia/PowerfromthePeople)
 Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
 ---
-[Mad Politics] (/Mad_Politics)
+[Mad Politics](/Mad_Politics)
 
 
 ---
