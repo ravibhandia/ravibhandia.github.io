@@ -19,4 +19,9 @@ Secondly, campaign strategists can use our database in a number of ways to help 
 Thirdly, policy makers will be able to use our database to get political ad information that will help them pass regulations that they believe will protect the democratic process. One aspect of our database is that it can provide up-to-date information about both advertisement spending and polling data on a state and advertisement platform basis. This will help policy makers investigate the operations of various ad platforms as well as potentially support regulation that aims to limit the influence of these digital ads.
 
 
+<p align='center'>
+    <img src="images/Presentation_mAD_Politics_Final.png?raw=true"/>
+</p>
+
+
 
