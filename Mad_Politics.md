@@ -20,7 +20,7 @@ Thirdly, policy makers will be able to use our database to get political ad info
 
 
 <p align='center'>
-    <img src="images/Presentation_mAD_Politics_Final.png?raw=true"/>
+    <img src="pdf/Presentation_mAD_Politics_Final.pdf?raw=true"/>
 </p>
 
 
