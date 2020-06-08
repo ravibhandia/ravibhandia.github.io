@@ -2,20 +2,26 @@
 
 ## About Me
 
-Growing up in the bay area, I was witness to the ambitions and the 
+I'm passionate about the environment, education equality, and finance. I grew up in the heart of the Silicon Valley and have had the opportunity to work at a number of startups in my early career. 
+
+I enjoy playing basketball, writing quotes in my quotebook, learning about advances in artificial intelligence, and playing games.
 
 
 ## Education
 
 ---
-- UC Berkeley, Berkeley, CA 08/2019-05/2020
+<img style="float: left;" src="images/berkeley.png?raw=true" width="50" height="50"/>&#8;
+ **University of California Berkeley**  (2019 - 2020)
 <br>
-• Masters of Engineering in Industrial Engineering and Operations Research (ML/AI track)
-
-
-- University of Southern California, Los Angeles, CA 08/2014 – 05/2018 
+&#8;  MEng (Master of Engineering) in IEOR
 <br>
-• Bachelor of Science in Chemical Engineering (Sustainable Energy), Minor: Business Finance; Renaissance Scholar
+&#8;  Data Analytics and Machine Learning Track     
+<br>
+<img style="float: left;" src="images/USC.jpeg?raw=true" width="50" height="50"/>&#8;
+**University of Southern California** (2014 - 2018)
+<br>
+&#8;  B.S in Chemical Engineering and minor in Business Finance
+<br><br>
 
 
 ## Experience
@@ -59,15 +65,18 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 ---
 [Mad Politics](/Mad_Politics)
 
+<img src="images/Presentation_mAD_Politics_Final/Slide01.jpg?raw=true"/>
+
 
 ---
 
-[MyFridge-Product Management](/MyFridge)
+[MyFridge-Product Management MVP](pdf/MyFridge.pdf)
+
+<img src="images/MyFridge_Final/Slide02.jpg?raw=true"/>
 
 
 
-- [DearDuck Market Tests](http://example.com/)
-- [Project 3 Title](http://example.com/)
-- [Project 4 Title](http://example.com/)
-- [Project 5 Title](http://example.com/)
+
+
+
 
