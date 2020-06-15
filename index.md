@@ -65,7 +65,7 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 ---
 [Mad Politics](/Mad_Politics)
 
-<img src="images/ER_Diagram.jpg?raw=true" >
+<img src="images/ERDiagram.jpg?raw=true" >
 
 
 ---
