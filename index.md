@@ -45,25 +45,25 @@ I enjoy playing basketball, collecting quotes, learning about advances in artifi
 
 ---
 
-[Historical analysis and live anomaly detection on Ripple's Blockchain](/Ripple)
+[UC Berkeley and Ripple Capstone Project: Historical analysis and live anomaly detection on Ripple's Blockchain](/Ripple)
 <img src="images/Ripple-1.png?raw=true"/>
 <br>
 Github repo is found [here](https://github.com/ravibhandia/XRPLordsRemastered)
 
 ---
-[Power from the People - Characterizing Energy Use](/pdf/242_Final_Project_Presentation.pdf)
+[Power from the People - Characterizing Energy Use UC Berkeley BEARS Lab](/pdf/242_Final_Project_Presentation.pdf)
 <img src="images/EnergyUseCharacterized.png?raw=true" width="500" height="375"/>
 
 Github repo is found [here](https://github.com/ravibhandia/PowerfromthePeople)
 
 ---
-[Anchain.ai Bot Detection](/Anchain)
+[Anchain.ai Bot Detection - Data X Project](/Anchain)
 <video loop src="videos/anchaindemo.mov" name="Anchain.ai Demo" width='500' height="375" autoplay>
     </video>
 Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
 ---
-[Mad Politics](/Mad_Politics)
+[Mad Politics - Database and WebApp](/Mad_Politics)
 
 <img src="images/ERDiagram.jpg?raw=true" >
 
