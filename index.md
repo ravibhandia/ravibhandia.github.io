@@ -65,14 +65,14 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 ---
 [Mad Politics](/Mad_Politics)
 
-<img src="images/Presentation_mAD_Politics_Final/Slide01.jpg?raw=true" width="500" height="375"/>
+<img src="images/ER_Diagram.jpg?raw=true" >
 
 
 ---
 
 [MyFridge-Product Management MVP](pdf/MyFridge.pdf)
 
-<img src="images/MyFridge_Final/Slide02.jpg?raw=true" width="500" height="375"/>
+<img src="images/MyFridge_Final/Slide02.jpg?raw=true" >
 
 
 
