@@ -26,6 +26,8 @@ I enjoy playing basketball, collecting quotes, learning about advances in artifi
 
 ## Experience
 
+---
+
 - Data Scientist/Product Manager, UC Berkeley Capstone Team @ [Ripple](https://ripple.com)
 
 - Data Science Intern @ [PostRoad Foundation](https://www.postroadfoundation.org)
@@ -73,6 +75,16 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 [MyFridge-Product Management MVP](pdf/MyFridge.pdf)
 
 <img src="images/MyFridge_Final/Slide02.jpg?raw=true" >
+
+
+## Awards
+
+---
+- Fung Excellence Scholarship Recipient - UC Berkeley 2019
+
+- Renaissance Scholar Award - University of Southern California 2018
+
+- Love of Learning Award - Harker 2014
 
 
 
