@@ -4,7 +4,7 @@
 
 I'm passionate about the environment, education equality, and finance. I grew up in the heart of the Silicon Valley and have had the opportunity to work at a number of startups in my early career. 
 
-I enjoy playing basketball, collecting quotes in my quotebook, learning about advances in artificial intelligence, and playing videogames.
+I enjoy playing basketball, collecting quotes, learning about advances in artificial intelligence, and playing videogames.
 
 
 ## Education
