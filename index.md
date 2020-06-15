@@ -46,7 +46,7 @@ I enjoy playing basketball, collecting quotes, learning about advances in artifi
 ---
 
 [Historical analysis and live anomaly detection on Ripple's Blockchain](/Ripple)
-<img src="images/Ripple-1.png?raw=true" width="500" height="375"/>
+<img src="images/Ripple-1.png?raw=true"/>
 <br>
 Github repo is found [here](https://github.com/ravibhandia/XRPLordsRemastered)
 
