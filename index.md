@@ -46,13 +46,13 @@ I enjoy playing basketball, collecting quotes, learning about advances in artifi
 ---
 
 [Historical analysis and live anomaly detection on Ripple's Blockchain](/Ripple)
-<img src="images/Ripple-1.png?raw=true"/>
+<img src="images/Ripple-1.png?raw=true" width="500" height="375"/>
 <br>
 Github repo is found [here](https://github.com/ravibhandia/XRPLordsRemastered)
 
 ---
 [Power from the People - Characterizing Energy Use](/pdf/242_Final_Project_Presentation.pdf)
-<img src="images/EnergyUseCharacterized.png?raw=true"/>
+<img src="images/EnergyUseCharacterized.png?raw=true" width="500" height="375"/>
 
 Github repo is found [here](https://github.com/ravibhandia/PowerfromthePeople)
 
@@ -65,14 +65,14 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 ---
 [Mad Politics](/Mad_Politics)
 
-<img src="images/Presentation_mAD_Politics_Final/Slide01.jpg?raw=true"/>
+<img src="images/Presentation_mAD_Politics_Final/Slide01.jpg?raw=true" width="500" height="375"/>
 
 
 ---
 
 [MyFridge-Product Management MVP](pdf/MyFridge.pdf)
 
-<img src="images/MyFridge_Final/Slide02.jpg?raw=true"/>
+<img src="images/MyFridge_Final/Slide02.jpg?raw=true" width="500" height="375"/>
 
 
 
