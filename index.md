@@ -68,7 +68,7 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
 ---
 
-[MyFridge-Product Management MVP](pdf/MyFridge.pdf)
+MyFridge-Product Management MVP
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS8zapzjGr5X3ongTfL4YVW06oDR3LWnbwEsawiB8Ms1hWcfjyQJcXidpHXlEc694ne6KwN525IwFgI/embed?start=false&loop=false&delayms=3000" frameborder="0" width='500' height="375" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
