@@ -76,18 +76,18 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 
 Identifying Wildfire Suceptiblity using SIR models
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTHdx7p9yh7VpkGAsEcR5HqbE_YgBjJz005UBvMPlqSpDAnwOKKh2lAA2naS46zEd-tGjrSsO79jJay/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTHdx7p9yh7VpkGAsEcR5HqbE_YgBjJz005UBvMPlqSpDAnwOKKh2lAA2naS46zEd-tGjrSsO79jJay/embed?start=false&loop=false&delayms=3000" frameborder="0" width='500' height="375" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ---
 Design and Analysis of a Bio-butanol Production Plant
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSmO5gCeDbePbntJ3VRhaLn2dm-b4SV4mptT4e9BI1cm1AfIiMWp7N3GVKh1Cz4p8dG40vRRyd2C9iQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSmO5gCeDbePbntJ3VRhaLn2dm-b4SV4mptT4e9BI1cm1AfIiMWp7N3GVKh1Cz4p8dG40vRRyd2C9iQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width='500' height="375" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
 ---
 Helium-3 as a Power Source
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRGcaTlNwQjlgiHt7wEx9-8TDSRQcqvLHEnLYdygtRpOcyg8mMOjr2kDOkzWn6B9S7syyVgSpixuyzc/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRGcaTlNwQjlgiHt7wEx9-8TDSRQcqvLHEnLYdygtRpOcyg8mMOjr2kDOkzWn6B9S7syyVgSpixuyzc/embed?start=false&loop=false&delayms=3000" frameborder="0" width='500' height="375" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
 ## Awards
