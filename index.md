@@ -95,11 +95,10 @@ Helium-3 as a Power Source
 ---
 - Fung Excellence Scholarship Recipient - UC Berkeley 2019
 
--- 2nd place at IBM Datathon @ UC Berkeley
+- 2nd place at IBM Datathon @ UC Berkeley
 
 - Renaissance Scholar Award - University of Southern California 2018
 
-- Love of Learning Award - Harker 2014
 
 ## Publications
 
