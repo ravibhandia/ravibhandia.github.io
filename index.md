@@ -104,7 +104,7 @@ Helium-3 as a Power Source
 ## Publications
 
 ---
-- “Solventless grafting of functional polymer coatings onto Parylene C”, J. Vac. Sci. Technol. A 34, 041403 (2016).
+- [“Solventless grafting of functional polymer coatings onto Parylene C”, J. Vac. Sci. Technol. A 34, 041403 (2016).](https://avs.scitation.org/doi/abs/10.1116/1.4953876)
 
 
 
