@@ -63,14 +63,14 @@ Github repo is found [here](https://github.com/ravibhandia/anchain_ai_datax)
 ---
 [Mad Politics - Database and WebApp](/Mad_Politics)
 
-<img src="images/ERDiagram.jpg?raw=true" >
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT71uOPDJBhUQWmYcVzAbAEjwV3dHuMLGdhbehwYzn_n6YXDUuQQG-_6O7UyesBiQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width='500' height="375" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
 ---
 
 [MyFridge-Product Management MVP](pdf/MyFridge.pdf)
 
-<img src="images/MyFridge_Final/Slide02.jpg?raw=true" >
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS8zapzjGr5X3ongTfL4YVW06oDR3LWnbwEsawiB8Ms1hWcfjyQJcXidpHXlEc694ne6KwN525IwFgI/embed?start=false&loop=false&delayms=3000" frameborder="0" width='500' height="375" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 --- 
 
