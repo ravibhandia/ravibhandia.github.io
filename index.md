@@ -11,13 +11,13 @@ I enjoy playing basketball, collecting quotes, learning about advances in artifi
 
 ---
 <img style="float: left;" src="images/berkeley.png?raw=true" width="50" height="50"/>&#8;
- **University of California Berkeley**  (2019 - 2020)
-<br> MEng (Master of Engineering) in IEOR
-<br> Data Analytics and Machine Learning Track     
+ &nbsp; **University of California Berkeley**  (2019 - 2020)
+<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MEng (Master of Engineering) in IEOR
+<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data Analytics and Machine Learning Track     
 <br>
 <img style="float: left;" src="images/USC.jpeg?raw=true" width="50" height="50"/>&#8;
-**University of Southern California** (2014 - 2018)
-<br>B.S in Chemical Engineering and minor in Business Finance
+ &nbsp; **University of Southern California** (2014 - 2018)
+<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B.S in Chemical Engineering and minor in Business Finance
 <br>
 
 
