@@ -64,6 +64,10 @@ export default function Story() {
           <p className="text-center">
             <Link href="https://blogs.cisco.com/security/the-challenges-of-building-generative-ai-applications-in-cybersecurity" className="text-white no-underline border-b border-white">Building</Link> Generative AI for Security at Cisco
           </p>
+          
+          <p className="text-center">
+            <Link href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2025/m01/cisco-unveils-ai-defense-to-secure-the-ai-transformation-of-enterprises.html" className="text-white no-underline border-b border-white">Launched</Link> AI Defense following Cisco's <Link href="https://blogs.cisco.com/news/fortifying-the-future-of-security-for-ai-cisco-announces-intent-to-acquire-robust-intelligence" className="text-white no-underline border-b border-white">acquisition</Link> of Robust Intelligence
+          </p>
         </div>
       </div>
     </main>
