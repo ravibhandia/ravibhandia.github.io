@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 30, 30, 30;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  line-height: 1.6;
+}
+
+.back-link {
+  @apply mb-10 text-left;
+}
+
+.back-link a {
+  @apply text-white no-underline border-b border-white;
+}
+
+.quote-author {
+  @apply text-gray-400 ml-5;
+}
+
+.gray-text {
+  @apply text-gray-400;
+} 
