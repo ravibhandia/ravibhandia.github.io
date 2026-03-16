@@ -74,12 +74,13 @@ a:hover {
 
 .back-link {
     display: inline-block;
-    margin-bottom: 48px;
-    font-size: 14px;
+    margin-bottom: 32px;
+    font-size: 13px;
     letter-spacing: 0.5px;
     border-bottom: none;
     color: var(--text-muted);
     transition: color 0.3s ease, transform 0.2s ease;
+    animation: fadeIn 0.4s ease-out both;
 }
 
 .back-link:hover {

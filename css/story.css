@@ -1,12 +1,13 @@
 body {
     display: flex;
     flex-direction: column;
-    padding: 6vh 4vw 4vh 16vw;
+    padding: 4vh 4vw 4vh 4vw;
 }
 
 .page-content {
     flex: 1;
     max-width: 560px;
+    margin-left: 12vw;
 }
 
 .timeline {
@@ -83,17 +84,23 @@ body {
 
 footer {
     max-width: 560px;
+    margin-left: 12vw;
 }
 
 @media (max-width: 900px) {
     body {
-        padding: 6vh 8vw;
+        padding: 4vh 6vw;
+    }
+
+    .page-content,
+    footer {
+        margin-left: 0;
     }
 }
 
 @media (max-width: 600px) {
     body {
-        padding: 4vh 6vw;
+        padding: 3vh 5vw;
     }
 
     .timeline {
