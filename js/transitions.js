@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Page exit fade using pageHide/beforeunload so browser history works normally
+    // Page exit fade — add class on leave, remove it on bfcache restore
     window.addEventListener('pagehide', () => {
         document.body.classList.add('is-leaving');
+    });
+
+    window.addEventListener('pageshow', (e) => {
+        // Fires on bfcache restore (back/forward navigation)
+        if (e.persisted) {
+            document.body.classList.remove('is-leaving');
+        }
+    });
+
+    // Open external links in a new tab
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
     });
 
     // Scroll-triggered timeline animation
@@ -10,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!timeline) return;
 
     const items = timeline.querySelectorAll('.entry, .section-label');
+
+    // Reduced motion: skip animation entirely, make everything visible immediately
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        items.forEach(item => item.classList.add('visible'));
+        return;
+    }
 
     const observer = new IntersectionObserver(observed => {
         const appearing = observed.filter(o => o.isIntersecting);

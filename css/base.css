@@ -133,6 +133,20 @@ body.is-leaving {
     transition: opacity 0.15s ease;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .entry,
+    .section-label {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 @media (max-width: 600px) {
     .back-link {
         margin-bottom: 32px;
