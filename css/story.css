@@ -24,6 +24,12 @@ body {
     color: rgba(255, 255, 255, 0.2);
     margin: 52px 0 12px;
     position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.section-label.visible {
+    opacity: 1;
 }
 
 .section-label:first-child {
@@ -35,6 +41,14 @@ body {
     margin: 28px 0;
     font-size: 14.5px;
     line-height: 1.75;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.entry.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .entry::before {
@@ -46,7 +60,12 @@ body {
     height: 5px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.4s ease-out;
+    transform: scale(0);
+}
+
+.entry.visible::before {
+    transform: scale(1);
 }
 
 .entry:hover::before {
@@ -66,6 +85,11 @@ body {
 .entry.aside::before {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.15);
+    transform: scale(0);
+}
+
+.entry.aside.visible::before {
+    transform: scale(1);
 }
 
 .entry.current {
@@ -80,6 +104,11 @@ body {
     left: -33px;
     top: 8px;
     box-shadow: 0 0 8px rgba(201, 168, 124, 0.3);
+    transform: scale(0);
+}
+
+.entry.current.visible::before {
+    transform: scale(1);
 }
 
 footer {
