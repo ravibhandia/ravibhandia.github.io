@@ -1,12 +1,15 @@
 body {
     display: flex;
     flex-direction: column;
-    padding: 8vh 4vw 4vh 16vw;
+    align-items: center;
+    padding: 2vw;
 }
 
 .page-content {
     flex: 1;
-    max-width: 600px;
+    width: 100%;
+    max-width: 560px;
+    padding: 10vh 20px 40px;
 }
 
 h1 {
@@ -50,18 +53,22 @@ nav li::before {
     font-variant-numeric: tabular-nums;
 }
 
-@media (max-width: 900px) {
-    body {
-        padding: 6vh 8vw;
-    }
+footer {
+    width: 100%;
+    max-width: 560px;
+    padding: 24px 20px;
 }
 
 @media (max-width: 600px) {
-    body {
-        padding: 5vh 6vw;
+    .page-content {
+        padding: 6vh 16px 24px;
     }
 
     nav li {
         margin: 18px 0;
+    }
+
+    footer {
+        padding: 24px 16px;
     }
 }
