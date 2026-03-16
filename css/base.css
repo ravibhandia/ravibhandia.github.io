@@ -115,10 +115,34 @@ footer a:hover {
     border-bottom: none;
 }
 
+.mobile-notice {
+    display: none;
+}
+
 @media (max-width: 600px) {
+    .mobile-notice {
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-muted);
+        padding: 12px 20px;
+        letter-spacing: 0.3px;
+        opacity: 0.7;
+    }
+
+    .back-link {
+        margin-bottom: 32px;
+    }
+
+    .page-title {
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+    }
+
     footer {
         flex-direction: column;
         gap: 16px;
         text-align: center;
+        margin-top: 48px;
     }
 }
