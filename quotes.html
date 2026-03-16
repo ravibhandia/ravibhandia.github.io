@@ -1,82 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='white'/></svg>">
-    <title>Quotes - Ravi Bhandia</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
-        body {
-            background-color: #1e1e1e;
-            color: #ffffff;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 2vw;
-            box-sizing: border-box;
-        }
-        .page-content {
-            width: 100%;
-            max-width: 600px;
-            min-height: 80vh;
-            padding: 20px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-size: 14.5px;
-            font-weight: normal;
-            line-height: 1.5;
-            letter-spacing: normal;
-            text-align: center;
-            color: #ffffff;
-            border-bottom: 1px solid #ffffff;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-        p {
-            margin: 20px auto;
-            text-align: center;
-            max-width: 800px;
-        }
-        a {
-            color: #ffffff;
-            text-decoration: none;
-            border-bottom: 1px solid #ffffff;
-        }
-        .back {
-            margin-bottom: 40px;
-            text-align: left;
-        }
-        .author {
-            color: #808080;
-            margin-left: 20px;
-        }
-    </style>
+    <meta name="description" content="Favorite quotes collected by Ravi Bhandia.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' x='0.1em' font-size='80' fill='white' font-family='Georgia, serif'>R</text></svg>">
+    <title>Quotes — Ravi Bhandia</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/quotes.css">
 </head>
 <body>
-    <div class="page-content">
-        <p class="back"><a href="/">←Back</a></p>
-        <h1>My Favorite Quotes</h1>
+    <main class="page-content">
+        <a href="/" class="back-link">&larr; Back</a>
+        <h1 class="page-title">Favorite Quotes</h1>
 
-        <p>"Do you want to sell sugar water for the rest of your life, or do you want to come with me and change the world?"<span class="author">- Steve Jobs to John Sculley</span></p>
-        
-        <p>"My mind is at ease knowing that what was meant for me will never miss me and what misses me was never meant for me"<span class="author">- Imam Al- Shafi</span></p>
-        
-        <p>"The more you lose yourself in something bigger than yourself, the more energy you will have."<span class="author">- Norman Vincent Peale</span></p>
-        
-        <p>"To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment."<span class="author">- Ralph Waldo Emerson</span></p>
-        
-        <p>"The culmination of love is grief"<span class="author">- Faye</span></p>
-        
-        <p>"It is important to draw wisdom from different places. If you take it from only one place it become rigid and stale."<span class="author">- Uncle Iroh</span></p>
-        
-        <p>"One of the biggest misconceptions about new ideas is about the ratio of question to answer in their composition. People think big ideas are answers, but often the real insight was in the question."<span class="author">- Paul Graham</span></p>
-    </div>
+        <div class="quotes-list">
+            <blockquote class="quote-block">
+                <p class="quote-text">&ldquo;Do you want to sell sugar water for the rest of your life, or do you want to come with me and change the world?&rdquo;</p>
+                <cite class="quote-author">Steve Jobs to John Sculley</cite>
+            </blockquote>
+
+            <blockquote class="quote-block">
+                <p class="quote-text">&ldquo;My mind is at ease knowing that what was meant for me will never miss me and what misses me was never meant for me.&rdquo;</p>
+                <cite class="quote-author">Imam Al-Shafi</cite>
+            </blockquote>
+
+            <blockquote class="quote-block">
+                <p class="quote-text">&ldquo;The more you lose yourself in something bigger than yourself, the more energy you will have.&rdquo;</p>
+                <cite class="quote-author">Norman Vincent Peale</cite>
+            </blockquote>
+
+            <blockquote class="quote-block">
+                <p class="quote-text">&ldquo;To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.&rdquo;</p>
+                <cite class="quote-author">Ralph Waldo Emerson</cite>
+            </blockquote>
+
+            <blockquote class="quote-block">
+                <p class="quote-text">&ldquo;The culmination of love is grief.&rdquo;</p>
+                <cite class="quote-author">Faye</cite>
+            </blockquote>
+
+            <blockquote class="quote-block">
+                <p class="quote-text">&ldquo;It is important to draw wisdom from different places. If you take it from only one place it becomes rigid and stale.&rdquo;</p>
+                <cite class="quote-author">Uncle Iroh</cite>
+            </blockquote>
+
+            <blockquote class="quote-block">
+                <p class="quote-text">&ldquo;One of the biggest misconceptions about new ideas is about the ratio of question to answer in their composition. People think big ideas are answers, but often the real insight was in the question.&rdquo;</p>
+                <cite class="quote-author">Paul Graham</cite>
+            </blockquote>
+        </div>
+    </main>
+    <footer>
+        <span>&copy; Ravi Bhandia</span>
+        <nav>
+            <a href="https://twitter.com/ravi_bhandia">Twitter</a>
+            <a href="https://ravibhandia.substack.com/">Substack</a>
+            <a href="mailto:ravi@bhandia.com">Email</a>
+        </nav>
+    </footer>
 </body>
 </html>
