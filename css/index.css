@@ -21,6 +21,7 @@ h1 {
     letter-spacing: -0.5px;
     color: #ffffff;
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.03);
+    animation: fadeIn 0.6s ease-out both;
 }
 
 .bio {
@@ -29,6 +30,7 @@ h1 {
     margin-bottom: clamp(36px, 5vw, 60px);
     line-height: 1.8;
     max-width: 440px;
+    animation: fadeIn 0.6s ease-out 0.1s both;
 }
 
 nav ol {
@@ -41,16 +43,26 @@ nav li {
     margin: 22px 0;
     font-size: clamp(16px, 2vw, 19px);
     font-weight: 300;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out both;
 }
+
+nav li:nth-child(1) { animation-delay: 0.2s; }
+nav li:nth-child(2) { animation-delay: 0.28s; }
+nav li:nth-child(3) { animation-delay: 0.36s; }
+nav li:nth-child(4) { animation-delay: 0.44s; }
+nav li:nth-child(5) { animation-delay: 0.52s; }
 
 nav li::before {
     content: "0" counter(item) ". ";
     counter-increment: item;
+    font-family: var(--font-mono);
+    font-weight: 300;
     color: var(--text-muted);
-    opacity: 0.5;
-    margin-right: 10px;
-    font-size: 0.85em;
-    font-variant-numeric: tabular-nums;
+    opacity: 0.4;
+    margin-right: 12px;
+    font-size: 0.75em;
+    letter-spacing: -0.5px;
 }
 
 footer {
