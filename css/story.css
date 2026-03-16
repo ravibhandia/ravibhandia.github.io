@@ -1,15 +1,12 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2vw;
+    padding: 6vh 4vw 4vh 16vw;
 }
 
 .page-content {
-    width: 100%;
-    max-width: 560px;
     flex: 1;
-    padding: 40px 20px;
+    max-width: 560px;
 }
 
 .timeline {
@@ -85,14 +82,18 @@ body {
 }
 
 footer {
-    width: 100%;
     max-width: 560px;
-    padding: 24px 20px;
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 6vh 8vw;
+    }
 }
 
 @media (max-width: 600px) {
-    .page-content {
-        padding: 24px 16px;
+    body {
+        padding: 4vh 6vw;
     }
 
     .timeline {
@@ -105,9 +106,5 @@ footer {
 
     .entry.current::before {
         left: -25px;
-    }
-
-    footer {
-        padding: 24px 16px;
     }
 }

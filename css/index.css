@@ -1,15 +1,12 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2vw;
+    padding: 10vh 4vw 4vh 16vw;
 }
 
 .page-content {
     flex: 1;
-    width: 100%;
-    max-width: 560px;
-    padding: 10vh 20px 40px;
+    max-width: 600px;
 }
 
 h1 {
@@ -66,21 +63,21 @@ nav li::before {
 }
 
 footer {
-    width: 100%;
-    max-width: 560px;
-    padding: 24px 20px;
+    max-width: 600px;
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 8vh 8vw;
+    }
 }
 
 @media (max-width: 600px) {
-    .page-content {
-        padding: 6vh 16px 24px;
+    body {
+        padding: 6vh 6vw;
     }
 
     nav li {
         margin: 18px 0;
-    }
-
-    footer {
-        padding: 24px 16px;
     }
 }
