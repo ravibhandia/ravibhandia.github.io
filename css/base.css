@@ -100,34 +100,6 @@ a:hover {
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.04);
 }
 
-footer {
-    margin-top: 80px;
-    padding: 24px 0;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-muted);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    letter-spacing: 0.3px;
-}
-
-footer nav {
-    display: flex;
-    gap: 24px;
-}
-
-footer a {
-    color: var(--text-muted);
-    border-bottom: none;
-    font-size: 13px;
-}
-
-footer a:hover {
-    color: var(--accent);
-    border-bottom: none;
-}
-
 body.is-leaving {
     opacity: 0;
     transition: opacity 0.15s ease;
@@ -157,10 +129,4 @@ body.is-leaving {
         padding-bottom: 20px;
     }
 
-    footer {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-        margin-top: 48px;
-    }
 }

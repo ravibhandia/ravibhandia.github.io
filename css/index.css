@@ -62,10 +62,6 @@ nav li::before {
     letter-spacing: -0.5px;
 }
 
-footer {
-    max-width: 600px;
-}
-
 @media (max-width: 900px) {
     body {
         padding: 8vh 8vw;
