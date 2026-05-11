@@ -11,22 +11,24 @@ body {
 }
 
 .story-portrait {
-    display: block;
-    width: 128px;
-    height: 160px;
+    position: fixed;
+    top: 22vh;
+    right: 13vw;
+    width: 150px;
+    height: 188px;
     object-fit: cover;
     object-position: 50% 42%;
-    margin: 0 0 44px;
     border-radius: 6px;
     filter: contrast(0.9) brightness(0.82);
-    opacity: 0.62;
+    opacity: 0.38;
+    pointer-events: auto;
     transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
 }
 
 .story-portrait:hover {
     filter: contrast(0.95) brightness(0.92);
-    opacity: 0.84;
-    transform: translateY(-1px);
+    opacity: 0.72;
+    transform: translateY(-2px);
 }
 
 .timeline {
@@ -135,6 +137,10 @@ body {
         padding: 4vh 6vw;
     }
 
+    .story-portrait {
+        display: none;
+    }
+
     .page-content {
         margin-left: 0;
     }
@@ -143,12 +149,6 @@ body {
 @media (max-width: 600px) {
     body {
         padding: 3vh 5vw;
-    }
-
-    .story-portrait {
-        width: 112px;
-        height: 140px;
-        margin-bottom: 36px;
     }
 
     .timeline {
