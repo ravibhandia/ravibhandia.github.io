@@ -17,15 +17,16 @@ body {
     object-fit: cover;
     object-position: 50% 42%;
     margin: 0 0 44px;
-    border-radius: 2px;
-    filter: grayscale(1) saturate(0.2) contrast(0.9) brightness(0.78);
-    opacity: 0.72;
-    transition: filter 0.35s ease, opacity 0.35s ease;
+    border-radius: 6px;
+    filter: contrast(0.9) brightness(0.82);
+    opacity: 0.62;
+    transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
 }
 
 .story-portrait:hover {
-    filter: grayscale(0.85) saturate(0.35) contrast(0.92) brightness(0.82);
-    opacity: 0.82;
+    filter: contrast(0.95) brightness(0.92);
+    opacity: 0.84;
+    transform: translateY(-1px);
 }
 
 .timeline {
