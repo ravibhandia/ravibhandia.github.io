@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    padding: 10vh 4vw 4vh 16vw;
+    padding: 10vh var(--page-side-padding) 4vh var(--page-gutter);
 }
 
 .page-content {

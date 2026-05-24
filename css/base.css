@@ -3,9 +3,11 @@
 :root {
     --bg: #1a1a1a;
     --text: #e8e8e8;
-    --text-muted: #707070;
+    --text-muted: #858585;
     --accent: #c9a87c;
     --border: rgba(255, 255, 255, 0.1);
+    --page-gutter: clamp(28px, 16vw, 220px);
+    --page-side-padding: clamp(20px, 4vw, 64px);
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
@@ -55,6 +57,21 @@ a {
 a:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+}
+
+a[href^="http"]::after {
+    content: " \2197";
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72em;
+    opacity: 0.45;
+    transform: translateY(-0.08em);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+a[href^="http"]:hover::after {
+    opacity: 0.85;
+    transform: translate(1px, -0.18em);
 }
 
 @keyframes fadeIn {
