@@ -10,27 +10,6 @@ body {
     margin-left: 12vw;
 }
 
-.story-portrait {
-    position: fixed;
-    top: 22vh;
-    right: 13vw;
-    width: 150px;
-    height: 188px;
-    object-fit: cover;
-    object-position: 50% 42%;
-    border-radius: 6px;
-    filter: contrast(0.9) brightness(0.82);
-    opacity: 0.38;
-    pointer-events: auto;
-    transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
-}
-
-.story-portrait:hover {
-    filter: contrast(0.95) brightness(0.92);
-    opacity: 0.72;
-    transform: translateY(-2px);
-}
-
 .timeline {
     border-left: 1px solid var(--border);
     padding-left: 28px;
@@ -135,10 +114,6 @@ body {
 @media (max-width: 900px) {
     body {
         padding: 4vh 6vw;
-    }
-
-    .story-portrait {
-        display: none;
     }
 
     .page-content {
