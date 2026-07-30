@@ -31,10 +31,8 @@ h1 {
 }
 
 .ny-epigraph {
-    position: fixed;
-    top: 34vh;
-    right: 8vw;
-    width: 260px;
+    margin-top: clamp(56px, 9vh, 100px);
+    max-width: 400px;
     opacity: 0;
     animation: fadeIn 0.8s ease-out 0.75s both;
 }
@@ -95,12 +93,6 @@ nav li::before {
     margin-right: 12px;
     font-size: 0.75em;
     letter-spacing: -0.5px;
-}
-
-@media (max-width: 1140px) {
-    .ny-epigraph {
-        display: none;
-    }
 }
 
 @media (max-width: 900px) {
