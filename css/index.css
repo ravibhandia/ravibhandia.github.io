@@ -24,10 +24,35 @@ h1 {
 .bio {
     font-size: clamp(14px, 1.6vw, 15.5px);
     color: var(--text-muted);
-    margin-bottom: clamp(36px, 5vw, 60px);
+    margin-bottom: 12px;
     line-height: 1.8;
     max-width: 440px;
     animation: fadeIn 0.6s ease-out 0.1s both;
+}
+
+.ny-epigraph {
+    max-width: 440px;
+    margin-bottom: clamp(36px, 5vw, 60px);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.18s both;
+}
+
+.ny-epigraph p {
+    font-size: 12.5px;
+    line-height: 1.85;
+    font-style: italic;
+    color: var(--text-muted);
+    opacity: 0.72;
+}
+
+.ny-epigraph cite {
+    display: block;
+    margin-top: 7px;
+    font-size: 10.5px;
+    font-style: normal;
+    color: var(--text-muted);
+    opacity: 0.48;
+    letter-spacing: 0.35px;
 }
 
 nav ol {
@@ -60,39 +85,6 @@ nav li::before {
     margin-right: 12px;
     font-size: 0.75em;
     letter-spacing: -0.5px;
-}
-
-.currently {
-    margin-top: clamp(48px, 7vw, 80px);
-    max-width: 440px;
-    opacity: 0;
-    animation: fadeIn 0.6s ease-out 0.65s both;
-}
-
-.currently-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.2);
-    margin-bottom: 12px;
-}
-
-.currently-quote p {
-    font-size: 12.5px;
-    line-height: 1.9;
-    font-style: italic;
-    color: var(--text-muted);
-    opacity: 0.85;
-}
-
-.currently-quote cite {
-    display: block;
-    margin-top: 10px;
-    font-size: 11px;
-    font-style: normal;
-    color: var(--text-muted);
-    opacity: 0.6;
-    letter-spacing: 0.5px;
 }
 
 @media (max-width: 900px) {
