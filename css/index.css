@@ -82,6 +82,7 @@ nav li:nth-child(2) { animation-delay: 0.28s; }
 nav li:nth-child(3) { animation-delay: 0.36s; }
 nav li:nth-child(4) { animation-delay: 0.44s; }
 nav li:nth-child(5) { animation-delay: 0.52s; }
+nav li:nth-child(6) { animation-delay: 0.60s; }
 
 nav li::before {
     content: "0" counter(item) ". ";
@@ -93,6 +94,88 @@ nav li::before {
     margin-right: 12px;
     font-size: 0.75em;
     letter-spacing: -0.5px;
+}
+
+.anti-ai-control {
+    margin-top: clamp(40px, 6vw, 64px);
+    max-width: 440px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.68s both;
+}
+
+.anti-ai-label {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.32);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.anti-ai-toggle {
+    appearance: none;
+    border: 1px solid rgba(201, 168, 124, 0.45);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font: 400 12px/1 var(--font-mono);
+    letter-spacing: 0.25px;
+    padding: 11px 16px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.anti-ai-toggle:hover,
+.anti-ai-toggle:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.anti-ai-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.anti-ai-toggle[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #17130e;
+}
+
+.anti-ai-help,
+.anti-ai-status {
+    max-width: 390px;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+.anti-ai-status:empty {
+    display: none;
+}
+
+body.anti-ai-enabled nav li {
+    animation: antiAiDrift 1.5s ease-in-out infinite alternate;
+    opacity: 1;
+    position: relative;
+    will-change: transform;
+}
+
+body.anti-ai-enabled nav li:nth-child(2n) { animation-direction: alternate-reverse; animation-duration: 1.9s; }
+body.anti-ai-enabled nav li:nth-child(3n) { animation-duration: 1.25s; }
+
+body.anti-ai-enabled nav a {
+    display: inline-block;
+    position: relative;
+    text-shadow: -5px 3px rgba(201, 168, 124, 0.22), 6px -3px rgba(201, 168, 124, 0.16);
+    transform: translate(var(--anti-x, 0), var(--anti-y, 0)) rotate(var(--anti-r, 0));
+    transition: transform 0.12s ease-out;
+}
+
+@keyframes antiAiDrift {
+    from { transform: translateX(-7px) rotate(-0.35deg); }
+    to { transform: translateX(9px) rotate(0.45deg); }
 }
 
 @media (max-width: 900px) {
@@ -108,5 +191,15 @@ nav li::before {
 
     nav li {
         margin: 18px 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.anti-ai-enabled nav li {
+        animation: none;
+    }
+
+    body.anti-ai-enabled nav a {
+        transform: none !important;
     }
 }
