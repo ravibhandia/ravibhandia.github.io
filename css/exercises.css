@@ -1,6 +1,11 @@
+body {
+    padding: 7vh var(--page-side-padding) 8vh var(--page-gutter);
+}
+
 .exercise-hub,
 .warmup-page {
     max-width: 920px;
+    width: 100%;
 }
 
 .hub-header,
@@ -232,6 +237,10 @@
 }
 
 @media (max-width: 760px) {
+    body {
+        padding: 6vh 6vw;
+    }
+
     .routine-grid,
     .nerve-grid {
         grid-template-columns: 1fr;
