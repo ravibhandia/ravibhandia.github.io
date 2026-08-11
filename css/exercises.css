@@ -1,0 +1,253 @@
+.exercise-hub,
+.warmup-page {
+    max-width: 920px;
+}
+
+.hub-header,
+.warmup-header {
+    margin-bottom: 36px;
+}
+
+.hub-kicker,
+.warmup-kicker,
+.step-kicker {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hub-title,
+.warmup-title {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 400;
+    letter-spacing: -0.6px;
+    line-height: 1.08;
+    margin: 10px 0 14px;
+}
+
+.hub-intro,
+.warmup-intro {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 680px;
+}
+
+.routine-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.routine-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-height: 250px;
+    padding: 22px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.routine-card:hover,
+.routine-card:focus-within {
+    border-color: rgba(201, 168, 124, 0.65);
+    transform: translateY(-2px);
+}
+
+.routine-number {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.routine-card h2 {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 28px 0 12px;
+}
+
+.routine-card p {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    line-height: 1.7;
+}
+
+.routine-card a {
+    border-bottom-color: rgba(201, 168, 124, 0.55);
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    margin-top: 24px;
+}
+
+.warmup-summary,
+.clinical-note {
+    border-radius: 12px;
+    margin: 30px 0 42px;
+    padding: 20px 22px;
+}
+
+.warmup-summary {
+    background: rgba(201, 168, 124, 0.08);
+    border: 1px solid rgba(201, 168, 124, 0.3);
+}
+
+.warmup-summary p,
+.clinical-note p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+.warmup-summary strong,
+.clinical-note strong {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.warmup-section {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+}
+
+.warmup-section > h2 {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: clamp(25px, 4vw, 34px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 7px 0 12px;
+}
+
+.section-intro {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.75;
+    margin-bottom: 22px;
+    max-width: 720px;
+}
+
+.movement-card,
+.nerve-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.movement-card {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1fr);
+}
+
+.movement-label {
+    align-self: start;
+    border-left: 3px solid var(--accent);
+    padding-left: 14px;
+}
+
+.movement-label span {
+    color: var(--text-muted);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.movement-label strong {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.movement-copy p,
+.movement-copy li,
+.nerve-card p,
+.nerve-card li {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    line-height: 1.75;
+}
+
+.movement-copy strong,
+.nerve-card strong {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.movement-copy ul,
+.nerve-card ul {
+    margin-top: 10px;
+    padding-left: 18px;
+}
+
+.nerve-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nerve-card h3 {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 400;
+    margin: 8px 0 10px;
+}
+
+.nerve-tag {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.clinical-note {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--border);
+}
+
+.source-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-top: 12px;
+}
+
+.source-links a {
+    font-size: 11px;
+}
+
+@media (max-width: 760px) {
+    .routine-grid,
+    .nerve-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .routine-card {
+        min-height: auto;
+    }
+
+    .movement-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .routine-card {
+        transition: none;
+    }
+}

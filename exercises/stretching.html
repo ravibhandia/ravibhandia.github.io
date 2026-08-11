@@ -1,0 +1,1310 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Pancake Mobility Guide</title>
+<style>:root {
+  color-scheme: light dark;
+  background-color: transparent !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --main-surface-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 10px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E");
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-visualize-standalone] {
+  background-color: var(--background) !important;
+}
+
+/* Generic mobile code-block hosts provide light/dark mode but no series palette.
+   AppBlock hosts set all six variables themselves. */
+:root:not([data-app-block-surface]) {
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(#f3883b, #f59a56);
+  --viz-series-3: light-dark(#5dc977, #74d58b);
+  --viz-series-4: light-dark(#eb77b1, #f08fc0);
+  --viz-series-5: light-dark(#9b79ec, #aa91ef);
+  --viz-series-6: light-dark(#3ab9b1, #5acbc2);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html > body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+:root:not([data-app-block-surface]) > body {
+  padding: 12px;
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive > .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align="right"]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align="center"]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget > :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* The bundled tooltip runtime owns [data-tooltip]. AppBlock's CSS-only
+   pseudo-tooltip can widen dense grids even while hidden. */
+main [data-tooltip]::after {
+  content: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls > .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls > .form-label > :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--interactive-label-primary-default, var(--primary-foreground));
+  background: var(--interactive-bg-primary-default, var(--foreground));
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(
+    in srgb,
+    var(--interactive-label-primary-default, var(--primary-foreground)) 50%,
+    transparent
+  );
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type="file"] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type="file"]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type="file"]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type="color"] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: "";
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type="radio"]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: "";
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed="true"],
+    [aria-selected="true"],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed="true"], [aria-selected="true"], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget > svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+</style>
+</head>
+<body>
+<div id="pmg-root">
+  <style>
+    #pmg-root { color: var(--foreground); }
+    #pmg-root .exercise-breadcrumb { color:var(--muted-foreground); display:inline-block; font-size:.85rem; margin-bottom:1rem; text-decoration:none; }
+    #pmg-root .exercise-breadcrumb:hover, #pmg-root .exercise-breadcrumb:focus-visible { color:var(--foreground); text-decoration:underline; }
+    #pmg-root .days { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+    #pmg-root .stage { display:grid; grid-template-columns:minmax(240px, .85fr) minmax(280px, 1.15fr); gap:1rem; align-items:start; }
+    #pmg-root .pose-wrap { display:grid; gap:.5rem; }
+    #pmg-root .pose { min-height:340px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:color-mix(in srgb, var(--muted) 50%, transparent); border-radius:12px; }
+    #pmg-root svg { width:100%; max-width:430px; height:auto; color:var(--foreground); }
+    #pmg-root .body { fill:none; stroke:currentColor; stroke-width:8; stroke-linecap:round; stroke-linejoin:round; }
+    #pmg-root .body-thin { fill:none; stroke:currentColor; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+    #pmg-root .figure-fill { fill:color-mix(in srgb, var(--foreground) 14%, transparent); stroke:currentColor; stroke-width:4; stroke-linejoin:round; }
+    #pmg-root .joint { fill:var(--background); stroke:currentColor; stroke-width:4; }
+    #pmg-root .mannequin-line { fill:none; stroke:var(--foreground); stroke-width:15; stroke-linecap:round; stroke-linejoin:round; }
+    #pmg-root .mannequin-torso { fill:color-mix(in srgb, var(--viz-series-2) 30%, var(--background)); stroke:var(--foreground); stroke-width:4; stroke-linejoin:round; }
+    #pmg-root .mannequin-head { fill:color-mix(in srgb, var(--foreground) 14%, var(--background)); stroke:var(--foreground); stroke-width:4; }
+    #pmg-root .mannequin-joint { fill:var(--background); stroke:var(--foreground); stroke-width:4; }
+    #pmg-root .hand, #pmg-root .foot { fill:var(--foreground); }
+    #pmg-root .ghost { opacity:.22; }
+    #pmg-root .ghost * { vector-effect:non-scaling-stroke; }
+    #pmg-root .position-label { fill:var(--muted-foreground); font:700 11px system-ui,sans-serif; letter-spacing:.08em; }
+    #pmg-root .guide { fill:none; stroke:var(--viz-series-1); stroke-width:5; stroke-linecap:round; marker-end:url(#arrow); }
+    #pmg-root .guide-soft { fill:none; stroke:var(--viz-series-1); stroke-width:3; stroke-linecap:round; stroke-dasharray:7 7; }
+    #pmg-root .support { fill:none; stroke:var(--muted-foreground); stroke-width:5; }
+    #pmg-root .motion-note { fill:var(--foreground); font:500 13px sans-serif; }
+    #pmg-root .motion-sub { fill:var(--muted-foreground); font:400 11px sans-serif; }
+    #pmg-root .motion-controls { display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; }
+    #pmg-root .motion-controls[hidden] { display:none !important; }
+    #pmg-root .setup { margin:.6rem 0 0; padding:.65rem .75rem; border-left:3px solid var(--viz-series-1); background:color-mix(in srgb, var(--viz-series-1) 8%, transparent); border-radius:0 8px 8px 0; }
+    #pmg-root .steps { display:grid; gap:.5rem; }
+    #pmg-root .exercise { width:100%; text-align:left; }
+    #pmg-root .detail { margin-top:1rem; padding-top:.75rem; border-top:1px solid var(--border); }
+    #pmg-root .cue { display:grid; grid-template-columns:auto 1fr; gap:.35rem .65rem; margin:.75rem 0; }
+    #pmg-root .cue span:nth-child(odd) { font-weight:500; }
+    #pmg-root .warning { color:var(--foreground); background:color-mix(in srgb, var(--destructive) 12%, transparent); padding:.75rem; border-radius:10px; }
+    #pmg-root .footer { margin-top:1rem; padding-top:.75rem; border-top:1px solid var(--border); }
+    @media (prefers-reduced-motion: reduce) { #pmg-root .guide { stroke-dasharray:none; } }
+    @media (max-width:620px) { #pmg-root .stage { grid-template-columns:1fr; } #pmg-root .pose { min-height:270px; } #pmg-root .motion-note { font-size:12px; } }
+  </style>
+  <a class="exercise-breadcrumb" href="index.html">&larr; All exercise routines</a>
+  <div class="days" role="group" aria-label="Choose training day">
+    <button class="btn btn-primary day" data-day="a" aria-pressed="true">Day A · Pancake</button>
+    <button class="btn day" data-day="b" aria-pressed="false">Day B · Ankles + squat</button>
+    <button class="btn day" data-day="c" aria-pressed="false">Day C · Hip control</button>
+  </div>
+  <div class="stage">
+    <div class="pose-wrap">
+      <div class="pose" aria-live="polite">
+        <svg id="pose-svg" viewBox="0 0 400 330" role="img" aria-labelledby="pose-title pose-desc" focusable="false">
+          <title id="pose-title">Exercise position</title><desc id="pose-desc">Animated instructional movement diagram</desc>
+          <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="var(--viz-series-1)"/></marker></defs>
+          <g id="drawing"></g>
+        </svg>
+      </div>
+      <div id="motion-controls" class="motion-controls" role="group" aria-label="Animation controls">
+        <button id="motion-toggle" class="btn" type="button" aria-pressed="false">Pause motion</button>
+        <button id="motion-restart" class="btn" type="button">Restart</button>
+      </div>
+    </div>
+    <div>
+      <div id="exercise-list" class="steps"></div>
+      <section class="detail" aria-live="polite">
+        <h3 id="name"></h3>
+        <p id="setup" class="setup"></p>
+        <div class="cue"><span>Dose</span><span id="dose"></span><span>Do</span><span id="do"></span><span>Avoid</span><span id="avoid"></span></div>
+        <div id="pain" class="warning"></div>
+      </section>
+    </div>
+  </div>
+  <div class="footer text-small"><strong>Weekly rhythm:</strong> A → rest/easy activity → B → rest/easy activity → C → rest. Repeat. Warm up for 5 minutes before every session. Progress range only when symptoms are unchanged later that day and the next morning.</div>
+  <script>
+  false && (() => {
+    const root = document.getElementById('pmg-root');
+    const poses = {
+      pancake: '<path class="support" d="M45 265H355"/><circle class="body" cx="200" cy="82" r="22"/><path class="body" d="M200 106L185 188M186 187L98 264M186 187L304 264M190 138L135 205M190 138L250 198"/><path class="guide" d="M230 112Q267 145 248 188"/>',
+      rock: '<path class="support" d="M35 276H365"/><text class="motion-note" x="26" y="30">Knee under hip · other leg reaches sideways</text><text class="motion-sub" x="26" y="49">Hands stay planted while the hips travel back</text><path class="guide-soft" d="M235 180Q200 205 164 219"/><path class="guide" d="M226 188Q196 207 169 219"/><g><path class="body-thin" d="M205 152L274 235L350 268"/><circle class="joint" cx="274" cy="235" r="6"/><path class="body-thin" d="M201 167L210 244L238 270"><animate attributeName="d" values="M201 167L210 244L238 270;M163 187L178 238L204 270;M201 167L210 244L238 270" dur="4s" repeatCount="indefinite" keyTimes="0;.5;1"/></path><circle class="joint" cx="210" cy="244" r="6"><animate attributeName="cx" values="210;178;210" dur="4s" repeatCount="indefinite"/><animate attributeName="cy" values="244;238;244" dur="4s" repeatCount="indefinite"/></circle></g><g><path class="body-thin" d="M186 124L118 249M218 129L289 250"><animate attributeName="d" values="M186 124L118 249M218 129L289 250;M148 144L118 249M180 149L289 250;M186 124L118 249M218 129L289 250" dur="4s" repeatCount="indefinite" keyTimes="0;.5;1"/></path></g><g><animateTransform attributeName="transform" type="translate" values="0 0;-38 20;0 0" dur="4s" repeatCount="indefinite" keyTimes="0;.5;1"/><ellipse class="figure-fill" cx="203" cy="159" rx="31" ry="18"/><path class="figure-fill" d="M180 151L173 87Q200 66 228 88L225 151Z"/><circle class="joint" cx="202" cy="57" r="21"/><path class="body-thin" d="M185 83L200 74L219 84"/></g><circle class="joint" cx="118" cy="249" r="5"/><circle class="joint" cx="289" cy="250" r="5"/>',
+      hamstring: '<path class="support" d="M35 276H365"/><text class="motion-note" x="26" y="30">Front heel down · toes up · rear knee padded</text><text class="motion-sub" x="26" y="49">Fold at the hip; keep the spine long</text><path class="body-thin" d="M176 179L266 242L345 270"/><circle class="joint" cx="266" cy="242" r="6"/><path class="body-thin" d="M176 179L122 232L101 270"/><circle class="joint" cx="122" cy="232" r="6"/><path class="body-thin" d="M122 232L163 270"/><circle class="joint" cx="176" cy="179" r="8"/><path class="guide" d="M225 98Q268 126 276 171"/><path class="guide-soft" d="M176 179L276 179"/><g><animateTransform attributeName="transform" type="rotate" values="0 176 179;28 176 179;0 176 179" dur="4s" repeatCount="indefinite" keyTimes="0;.5;1"/><path class="figure-fill" d="M155 177L157 91Q176 72 197 91L201 177Z"/><circle class="joint" cx="177" cy="60" r="21"/><path class="body-thin" d="M160 102L224 183M193 102L248 180"/></g><path class="body-thin" d="M282 266L344 266"/><path class="guide-soft" d="M282 251L282 273"/>',
+      squat: '<path class="support" d="M45 278H355"/><circle class="body" cx="200" cy="72" r="22"/><path class="body" d="M200 96L200 177M200 132L145 174M200 132L255 174M200 177L145 220L112 274M200 177L255 220L288 274"/><path class="guide" d="M90 238L90 275M310 238L310 275"/>',
+      ankle: '<path class="support" d="M52 275H348M315 65V275"/><circle class="body" cx="160" cy="65" r="21"/><path class="body" d="M160 88L176 166M174 125L250 100M176 166L248 222L287 274M176 166L128 220L83 274"/><path class="guide" d="M245 205L293 205"/>',
+      cossack: '<path class="support" d="M35 276H365"/><circle class="body" cx="150" cy="75" r="21"/><path class="body" d="M153 98L170 170M163 132L110 180M163 132L220 175M170 170L110 215L84 274M170 170L250 245L340 270"/><path class="guide" d="M135 150L110 205"/>',
+      rotation: '<path class="support" d="M65 275H335"/><circle class="body" cx="200" cy="67" r="21"/><path class="body" d="M200 90L200 180M200 126L145 180M200 126L255 180M200 180L155 245L130 273M200 180L245 245L270 273"/><path class="guide" d="M128 238Q100 258 132 272M272 238Q300 258 268 272"/>',
+      bridge: '<path class="support" d="M45 275H355"/><circle class="body" cx="85" cy="212" r="20"/><path class="body" d="M107 215L190 185L260 215M120 218L82 273M260 215L305 273M157 203L145 260M210 193L225 260"/><path class="guide" d="M190 240L190 195"/>',
+      butterfly: '<path class="support" d="M45 275H355"/><circle class="body" cx="200" cy="67" r="21"/><path class="body" d="M200 90L200 184M200 125L150 182M200 125L250 182M200 184L145 230L200 263M200 184L255 230L200 263"/><path class="guide" d="M130 205L145 232M270 205L255 232"/>'
+    };
+    const data = {
+      a: [
+        ['Adductor rock-back','2 × 8/side','rock','Keep spine long; send hips back slowly.','Twisting the pelvis or forcing groin range.'],
+        ['Half-kneeling hamstring hinge','2 × 30 sec/side','hamstring','Fold from the hip with the front heel down and toes lifted.','Rounding down to chase depth.'],
+        ['Wide-straddle pelvic tilts','2 × 10','pancake','Sit on blocks; alternate gently between slouch and forward pelvic tilt.','Pulling with the arms.'],
+        ['Supported pancake hinge','4 × 20–30 sec','pancake','Hands on blocks; lead forward with the chest.','Head down, rounded back, or groin pain.'],
+        ['Straddle leg lifts','3 × 5/leg','pancake','Hands behind you; lift one heel a few centimeters.','Leaning far backward or holding breath.'],
+        ['Glute bridge + side plank','3 × 10 + 2 × 20 sec','bridge','Brace gently and move with control.','Arching the lower back.']
+      ],
+      b: [
+        ['Knee-to-wall ankle glide','3 × 8/side','ankle','Drive knee toward wall while the whole heel stays down.','Foot arch collapsing or heel lifting.'],
+        ['Calf + soleus stretch','2 × 30 sec each','ankle','Stretch once straight-kneed and once bent-kneed.','Bouncing into range.'],
+        ['Supported squat hold','4 × 20–30 sec','squat','Hold a post; use a small heel lift if needed.','Forcing heels down or hip pinching.'],
+        ['Slow heel-elevated squat','3 × 8','squat','Use a controlled 3-second descent.','Knees collapsing inward.'],
+        ['Assisted Cossack squat','3 × 5/side','cossack','Hold support; sit toward the bent leg.','Dropping lower than you can control.'],
+        ['Tibialis + calf raises','3 × 12–15 + 3 × 10','ankle','Use full comfortable ankle motion.','Rushing the lowering phase.']
+      ],
+      c: [
+        ['Gentle supine hip rotations','2 × 8','rotation','Move both knees only through a pain-free arc.','Testing the painful endpoint.'],
+        ['External-rotation isometric','3 × 15–20 sec','rotation','Press outward gently without visible movement.','Maximal effort or pelvic twisting.'],
+        ['Internal-rotation isometric','3 × 10–15 sec','rotation','Left side: only 20–30% effort and completely pain-free.','Any deep pain, pinch, click, or catch.'],
+        ['Side-lying abduction','3 × 8–12/side','bridge','Keep pelvis stacked; lift slightly behind you.','Rolling backward.'],
+        ['Band bridge','3 × 10','bridge','Press knees lightly outward; keep ribs down.','Back arch or hamstring cramp.'],
+        ['Supported Cossack','3 × 5/side','cossack','Use a smaller pain-free range on the left.','Rotating into discomfort.'],
+        ['Unweighted butterfly','2 × 30 sec','butterfly','Sit on blocks and let gravity do the work.','Weights or hands pressing knees down.'],
+        ['Supported pancake hinge','3 × 20 sec','pancake','Finish with an easy, controlled hinge.','Turning it into a max-effort test.']
+      ]
+    };
+    let day = 'a', selected = 0;
+    const list = root.querySelector('#exercise-list');
+    const motionButton = root.querySelector('#motion-toggle');
+    let motionPaused = false;
+    function render() {
+      list.innerHTML = '';
+      data[day].forEach((e,i) => {
+        const b=document.createElement('button'); b.className='btn exercise'+(i===selected?' btn-primary':''); b.textContent=(i+1)+'. '+e[0]; b.setAttribute('aria-pressed',i===selected?'true':'false');
+        b.addEventListener('click',()=>{selected=i;render();}); list.appendChild(b);
+      });
+      const e=data[day][selected]; root.querySelector('#name').textContent=e[0]; root.querySelector('#dose').textContent=e[1]; root.querySelector('#do').textContent=e[3]; root.querySelector('#avoid').textContent=e[4];
+      const svg = root.querySelector('#pose-svg');
+      if (typeof svg.unpauseAnimations === 'function') svg.unpauseAnimations();
+      motionPaused = false; motionButton.textContent = 'Pause motion'; motionButton.setAttribute('aria-pressed','false');
+      motionButton.hidden = !['rock','hamstring'].includes(e[2]);
+      root.querySelector('#drawing').innerHTML=poses[e[2]]; root.querySelector('#pose-title').textContent=e[0]+' movement';
+      root.querySelector('#pain').textContent = day==='c' ? 'Left hip rule: stop immediately for deep pain, pinching, catching, clicking, or instability.' : 'Intensity rule: mild muscular stretch is okay; joint pain or next-day worsening is not.';
+    }
+    motionButton.addEventListener('click',()=>{
+      const svg=root.querySelector('#pose-svg');
+      motionPaused=!motionPaused;
+      if (motionPaused && typeof svg.pauseAnimations === 'function') svg.pauseAnimations();
+      if (!motionPaused && typeof svg.unpauseAnimations === 'function') svg.unpauseAnimations();
+      motionButton.textContent=motionPaused?'Play motion':'Pause motion';
+      motionButton.setAttribute('aria-pressed',motionPaused?'true':'false');
+    });
+    root.querySelectorAll('.day').forEach(b=>b.addEventListener('click',()=>{day=b.dataset.day;selected=0;root.querySelectorAll('.day').forEach(x=>{const on=x===b;x.setAttribute('aria-pressed',on?'true':'false');x.className='btn day'+(on?' btn-primary':'');});render();}));
+    render();
+  })();
+  </script>
+  <script>
+  (() => {
+    'use strict';
+    const root=document.getElementById('pmg-root'), drawing=root.querySelector('#drawing'), list=root.querySelector('#exercise-list');
+    const toggle=root.querySelector('#motion-toggle'), restart=root.querySelector('#motion-restart'), controls=root.querySelector('#motion-controls');
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+    const staticPoses={
+      pancake:'<path class="support" d="M45 272H355"/><circle class="mannequin-head" cx="200" cy="78" r="21"/><path class="mannequin-line" d="M200 102L186 184M188 181L98 266M188 181L302 266M194 132L139 205M194 132L249 198"/><path class="guide" d="M230 112Q267 145 248 188"/>',
+      squat:'<path class="support" d="M45 278H355"/><circle class="mannequin-head" cx="200" cy="72" r="21"/><path class="mannequin-line" d="M200 96L200 174M200 130L148 173M200 130L252 173M200 174L147 220L114 274M200 174L253 220L286 274"/><path class="guide" d="M90 238L90 275M310 238L310 275"/>',
+      ankle:'<path class="support" d="M52 275H348M315 65V275"/><circle class="mannequin-head" cx="160" cy="65" r="21"/><path class="mannequin-line" d="M160 88L176 166M174 125L250 100M176 166L248 222L287 274M176 166L128 220L83 274"/><path class="guide" d="M245 205L293 205"/>',
+      cossack:'<path class="support" d="M35 276H365"/><circle class="mannequin-head" cx="150" cy="75" r="21"/><path class="mannequin-line" d="M153 98L170 170M163 132L110 180M163 132L220 175M170 170L110 215L84 274M170 170L250 245L340 270"/><path class="guide" d="M135 150L110 205"/>',
+      rotation:'<path class="support" d="M65 275H335"/><circle class="mannequin-head" cx="200" cy="67" r="21"/><path class="mannequin-line" d="M200 90L200 180M200 126L145 180M200 126L255 180M200 180L155 245L130 273M200 180L245 245L270 273"/><path class="guide" d="M128 238Q100 258 132 272M272 238Q300 258 268 272"/>',
+      bridge:'<path class="support" d="M45 275H355"/><circle class="mannequin-head" cx="85" cy="212" r="20"/><path class="mannequin-line" d="M107 215L190 185L260 215M120 218L82 273M260 215L305 273M157 203L145 260M210 193L225 260"/><path class="guide" d="M190 240L190 195"/>',
+      butterfly:'<path class="support" d="M45 275H355"/><circle class="mannequin-head" cx="200" cy="67" r="21"/><path class="mannequin-line" d="M200 90L200 184M200 125L150 182M200 125L250 182M200 184L145 230L200 263M200 184L255 230L200 263"/><path class="guide" d="M130 205L145 232M270 205L255 232"/>'
+    };
+    const data={
+      a:[['Adductor rock-back','2 × 8/side','rock','Keep spine long; send hips back slowly.','Twisting the pelvis or forcing groin range.'],['Half-kneeling hamstring hinge','2 × 30 sec/side','hamstring','Fold from the hip with the front heel down and toes lifted.','Rounding down to chase depth.'],['Wide-straddle pelvic tilts','2 × 10','tilt','Sit on blocks; alternate gently between slouch and forward pelvic tilt.','Pulling with the arms.'],['Supported pancake hinge','4 × 20–30 sec','hinge','Hands on blocks; lead forward with the chest.','Head down, rounded back, or groin pain.'],['Straddle leg lifts','3 × 5/leg','lifts','Hands behind you; lift one heel a few centimeters.','Leaning far backward or holding breath.'],['Glute bridge + side plank','3 × 10 + 2 × 20 sec','bridge','Brace gently and move with control.','Arching the lower back.']],
+      b:[['Knee-to-wall ankle glide','3 × 8/side','ankle_glide','Drive knee toward wall while the whole heel stays down.','Foot arch collapsing or heel lifting.'],['Calf + soleus stretch','2 × 30 sec each','calf_stretch','Stretch once straight-kneed and once bent-kneed.','Bouncing into range.'],['Supported squat hold','4 × 20–30 sec','squat_hold','Hold a post; use a small heel lift if needed.','Forcing heels down or hip pinching.'],['Slow heel-elevated squat','3 × 8','heel_squat','Use a controlled 3-second descent.','Knees collapsing inward.'],['Assisted Cossack squat','3 × 5/side','cossack_move','Hold support; sit toward the bent leg.','Dropping lower than you can control.'],['Tibialis + calf raises','3 × 12–15 + 3 × 10','calf_tib','Use full comfortable ankle motion.','Rushing the lowering phase.']],
+      c:[['Gentle supine hip rotations','2 × 8','supine_rotation','Move both knees only through a pain-free arc.','Testing the painful endpoint.'],['External-rotation isometric','3 × 15–20 sec','external_iso','Press outward gently without visible movement.','Maximal effort or pelvic twisting.'],['Internal-rotation isometric','3 × 10–15 sec','internal_iso','Left side: only 20–30% effort and completely pain-free.','Any deep pain, pinch, click, or catch.'],['Side-lying abduction','3 × 8–12/side','side_abduction','Keep pelvis stacked; lift slightly behind you.','Rolling backward.'],['Band bridge','3 × 10','band_bridge','Press knees lightly outward; keep ribs down.','Back arch or hamstring cramp.'],['Supported Cossack','3 × 5/side','supported_cossack','Use a smaller pain-free range on the left.','Rotating into discomfort.'],['Unweighted butterfly','2 × 30 sec','butterfly_lower','Sit on blocks and let gravity do the work.','Weights or hands pressing knees down.'],['Supported pancake hinge','3 × 20 sec','hinge','Finish with an easy, controlled hinge.','Turning it into a max-effort test.']]
+    };
+    const setup={rock:'Plant both hands. Stack one knee under its hip and extend the other leg straight out to the side.',hamstring:'Pad the rear knee. Extend the front leg with heel down and toes raised, then square the hips.',tilt:'Sit on a block in a comfortable straddle. Keep both kneecaps facing the ceiling and place your hands lightly on your thighs.',hinge:'Sit on one or two yoga blocks, a firm cushion, or folded blankets—high enough to tip the pelvis forward without rounding. Open to a comfortable straddle and place both hands on separate blocks in front.',lifts:'Sit on one or two yoga blocks, a firm cushion, or folded blankets if needed to stay tall. Open to a comfortable straddle, plant both hands behind you, and point both kneecaps upward.',ankle_glide:'Face a wall in a short split stance. Keep the working heel and tripod of the foot heavy.',calf_stretch:'Brace both hands on a wall. Step one foot back and keep that heel grounded.',squat_hold:'Hold a sturdy post at chest height. Set the feet comfortably wide and use a small heel lift if needed.',heel_squat:'Place both heels on a stable wedge. Stand tall with knees tracking over the middle toes.',cossack_move:'Take a wide stance and hold a sturdy support. Keep the long-leg heel grounded.',calf_tib:'Stand beside a support with feet parallel. Move slowly through the full comfortable ankle range.',supine_rotation:'Lie on your back with shoulders heavy and knees bent together. Brace gently.',external_iso:'Sit tall with knees bent and a band or your hands outside the knees. Keep the pelvis still.',internal_iso:'Sit tall with knees fixed apart and feet inside two stable blocks. Use only gentle effort on the left.',side_abduction:'Lie on your side with head supported, hips stacked, and the lower leg long.',band_bridge:'Lie on your back with feet planted and a loop band above the knees. Keep ribs quiet.',supported_cossack:'Hold a support in a wide stance. Use a deliberately shallow range on the left.',butterfly_lower:'Sit on blocks, bring soles together, and support yourself behind the hips. Add no external weight.'};
+    const descriptions={rock:'An articulated mannequin keeps both hands planted as the hips travel backward over the kneeling leg. The opposite leg remains extended laterally and the spine stays long.',hamstring:'A side-view articulated mannequin hinges its long torso forward from the hip while the supported rear knee, extended front heel, and raised toes remain fixed.',tilt:'A seated articulated mannequin alternates between a small posterior pelvic roll and a forward pelvic tilt while both straddled legs remain still.',hinge:'A seated articulated mannequin keeps both straddled legs fixed and hinges its long torso forward from the hips toward two support blocks.',lifts:'A supported seated mannequin alternately lifts the left and right heel from a wide straddle without rocking the torso backward.',ankle_glide:'A side-view mannequin drives the front knee toward the wall while the working heel and foot stay planted.',calf_stretch:'A wall-supported mannequin alternates a straight and softly bent back knee while the back heel remains down.',squat_hold:'A front-view mannequin uses a post for balance and lowers its hips between the feet into a supported squat.',heel_squat:'A front-view mannequin descends over a heel wedge with both knees tracking outward and the torso controlled.',cossack_move:'A wide-stance mannequin shifts its pelvis over one bending knee while the opposite leg remains long.',calf_tib:'A side-view mannequin alternates a heel-down toe raise and a toe-down calf raise at the ankle.',supine_rotation:'A supine mannequin keeps its shoulders down while both bent knees travel together through a small side-to-side arc.',external_iso:'A seated mannequin remains visibly still while outward tension cues pulse against the band at the knees.',internal_iso:'A seated mannequin remains visibly still while gentle internal-rotation pressure cues pulse outward at the feet.',side_abduction:'A side-lying mannequin keeps the pelvis stacked while the upper leg lifts slightly behind the body.',band_bridge:'A supine mannequin raises the pelvis by extending the hips while maintaining light outward band tension.',supported_cossack:'A supported mannequin performs a deliberately shallow lateral shift with the opposite leg long.',butterfly_lower:'A seated mannequin keeps the feet together while both knees lower gently under their own weight.'};
+    let day='a',selected=0,phase=0,playing=!reduced.matches,lastTime=null,activeKind='';
+    const P=(x,y)=>({x,y}), mix=(a,b,t)=>P(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t), smooth=t=>t*t*(3-2*t);
+    function torsoPath(s,h){const dx=h.x-s.x,dy=h.y-s.y,l=Math.hypot(dx,dy)||1,nx=-dy/l,ny=dx/l;return `M${s.x+nx*20} ${s.y+ny*20}L${s.x-nx*20} ${s.y-ny*20}L${h.x-nx*25} ${h.y-ny*25}L${h.x+nx*25} ${h.y+ny*25}Z`;}
+    function rockState(t){return{hip:mix(P(225,165),P(165,204),t),shoulder:mix(P(174,120),P(122,164),t),head:mix(P(147,91),P(98,134),t),le:mix(P(135,181),P(116,207),t),re:mix(P(165,184),P(145,211),t),lh:P(96,255),rh:P(145,255),knee:mix(P(220,244),P(180,245),t),foot:mix(P(207,270),P(214,270),t),sideKnee:mix(P(286,238),P(270,247),t),sideFoot:P(350,270)}}
+    function hamState(t){return{hip:P(190,177),shoulder:mix(P(190,105),P(262,145),t),head:mix(P(190,72),P(292,128),t),le:mix(P(210,152),P(250,176),t),re:mix(P(222,151),P(271,180),t),lh:mix(P(245,211),P(278,222),t),rh:mix(P(260,216),P(292,227),t),knee:P(135,250),foot:P(82,270),sideKnee:P(269,246),sideFoot:P(332,270),toe:P(356,258)}}
+    function straddleState(kind,t,leftLift=0,rightLift=0){
+      const base={hip:P(200,188),leftKnee:P(142,232),leftFoot:P(67,270-leftLift*30),rightKnee:P(258,232),rightFoot:P(333,270-rightLift*30)};
+      if(kind==='tilt')return{...base,shoulder:mix(P(184,126),P(216,116),t),head:mix(P(171,91),P(225,80),t),le:mix(P(170,164),P(160,174),t),re:mix(P(205,162),P(239,174),t),lh:P(151,224),rh:P(249,224),pelvis:-10+t*24};
+      if(kind==='hinge')return{...base,shoulder:mix(P(200,108),P(258,157),t),head:mix(P(200,73),P(288,144),t),le:mix(P(185,151),P(246,184),t),re:mix(P(216,151),P(270,185),t),lh:P(244,229),rh:P(295,229),pelvis:t*12};
+      return{...base,shoulder:P(185,119),head:P(174,84),le:P(160,171),re:P(210,171),lh:P(151,244),rh:P(235,244),pelvis:0};
+    }
+    function figure(s,kind,ghost=''){
+      const forefoot=kind==='hamstring'?`<path class="mannequin-line" d="M${s.sideFoot.x} ${s.sideFoot.y}L${s.toe.x} ${s.toe.y}"/>`:'', front=kind==='hamstring'?s.sideFoot:s.sideFoot;
+      return `<g class="${ghost}"><path class="mannequin-line" d="M${s.hip.x} ${s.hip.y}L${s.knee.x} ${s.knee.y}L${s.foot.x} ${s.foot.y}M${s.hip.x} ${s.hip.y}L${s.sideKnee.x} ${s.sideKnee.y}L${s.sideFoot.x} ${s.sideFoot.y}M${s.shoulder.x-10} ${s.shoulder.y+6}L${s.le.x} ${s.le.y}L${s.lh.x} ${s.lh.y}M${s.shoulder.x+10} ${s.shoulder.y-2}L${s.re.x} ${s.re.y}L${s.rh.x} ${s.rh.y}"/>${forefoot}<path class="mannequin-torso" d="${torsoPath(s.shoulder,s.hip)}"/><circle class="mannequin-head" cx="${s.head.x}" cy="${s.head.y}" r="20"/><circle class="mannequin-joint" cx="${s.hip.x}" cy="${s.hip.y}" r="8"/><circle class="mannequin-joint" cx="${s.knee.x}" cy="${s.knee.y}" r="6"/><circle class="mannequin-joint" cx="${s.sideKnee.x}" cy="${s.sideKnee.y}" r="6"/><ellipse class="hand" cx="${s.lh.x}" cy="${s.lh.y}" rx="10" ry="6"/><ellipse class="hand" cx="${s.rh.x}" cy="${s.rh.y}" rx="10" ry="6"/><ellipse class="foot" cx="${s.foot.x}" cy="${s.foot.y}" rx="17" ry="6"/><ellipse class="foot" cx="${front.x}" cy="${front.y}" rx="17" ry="6"/></g>`;
+    }
+    function straddleFigure(s,kind,ghost=''){
+      const blocks=kind==='hinge'?'<rect x="226" y="232" width="35" height="32" rx="4" fill="var(--background)" stroke="var(--viz-series-1)" stroke-width="4"/><rect x="278" y="232" width="35" height="32" rx="4" fill="var(--background)" stroke="var(--viz-series-1)" stroke-width="4"/>':'';
+      const seat='<rect x="158" y="190" width="84" height="36" rx="6" fill="var(--background)" stroke="var(--viz-series-1)" stroke-width="4"/><path class="support" d="M168 226V262M232 226V262"/>';
+      return `<g class="${ghost}">${seat}${blocks}<path class="mannequin-line" d="M${s.hip.x-10} ${s.hip.y}L${s.leftKnee.x} ${s.leftKnee.y}L${s.leftFoot.x} ${s.leftFoot.y}M${s.hip.x+10} ${s.hip.y}L${s.rightKnee.x} ${s.rightKnee.y}L${s.rightFoot.x} ${s.rightFoot.y}M${s.shoulder.x-10} ${s.shoulder.y+5}L${s.le.x} ${s.le.y}L${s.lh.x} ${s.lh.y}M${s.shoulder.x+10} ${s.shoulder.y}L${s.re.x} ${s.re.y}L${s.rh.x} ${s.rh.y}"/><path class="mannequin-torso" d="${torsoPath(s.shoulder,s.hip)}"/><ellipse class="mannequin-torso" cx="${s.hip.x}" cy="${s.hip.y}" rx="29" ry="13" transform="rotate(${s.pelvis} ${s.hip.x} ${s.hip.y})"/><circle class="mannequin-head" cx="${s.head.x}" cy="${s.head.y}" r="20"/><circle class="mannequin-joint" cx="${s.leftKnee.x}" cy="${s.leftKnee.y}" r="6"/><circle class="mannequin-joint" cx="${s.rightKnee.x}" cy="${s.rightKnee.y}" r="6"/><ellipse class="hand" cx="${s.lh.x}" cy="${s.lh.y}" rx="10" ry="6"/><ellipse class="hand" cx="${s.rh.x}" cy="${s.rh.y}" rx="10" ry="6"/><ellipse class="foot" cx="${s.leftFoot.x}" cy="${s.leftFoot.y}" rx="18" ry="6"/><ellipse class="foot" cx="${s.rightFoot.x}" cy="${s.rightFoot.y}" rx="18" ry="6"/></g>`;
+    }
+    function straddleScene(kind){
+      const meta={tilt:['Seated on block · kneecaps point up','Rock the pelvis—not the whole body','<path class="guide" d="M181 190Q201 169 221 190"/><text class="motion-sub" x="173" y="211">pelvic tilt</text>'],hinge:['Seated on block · hands supported','Lead with the chest; fold from the hips','<path class="guide" d="M224 102Q269 120 286 163"/><text class="motion-sub" x="280" y="108">hinge</text>'],lifts:['Seated on block · hands behind','Alternate one heel a few centimeters','<path class="guide" d="M68 262V228M332 262V228"/><text class="motion-sub" x="155" y="304">alternate heels</text>']}[kind];
+      const a=straddleState(kind,0),b=kind==='lifts'?straddleState(kind,0,1,0):straddleState(kind,1);
+      const labels=kind==='lifts'?'': '<text class="position-label" x="25" y="308">START</text><text class="position-label" x="326" y="308">END</text>';
+      return `<path class="support" d="M32 276H368"/><text class="motion-note" x="22" y="26">${meta[0]}</text><text class="motion-sub" x="22" y="45">${meta[1]}</text>${meta[2]}${labels}${straddleFigure(a,kind,'ghost')}${straddleFigure(b,kind,'ghost')}<g id="active-figure">${straddleFigure(a,kind)}</g>`;
+    }
+    function movementScene(kind){
+      if(customKinds.includes(kind))return customScene(kind);
+      if(['tilt','hinge','lifts'].includes(kind))return straddleScene(kind);
+      const rock=kind==='rock',a=rock?rockState(0):hamState(0),b=rock?rockState(1):hamState(1),note=rock?'Hands planted · knee under hip · other leg lateral':'Rear knee padded · front heel down · toes raised',sub=rock?'Hips travel back while the spine stays long':'Hinge forward from the hip without rounding',arrow=rock?'<path class="guide" d="M225 195Q195 214 165 218"/><text class="motion-sub" x="183" y="238">hips back</text>':'<path class="guide" d="M225 92Q269 110 286 154"/><text class="motion-sub" x="281" y="102">hinge</text>',pad=rock?'':'<rect x="111" y="268" width="48" height="9" rx="4" fill="var(--viz-series-1)" opacity=".35"/>';return `<path class="support" d="M32 276H368"/>${pad}<text class="motion-note" x="22" y="26">${note}</text><text class="motion-sub" x="22" y="45">${sub}</text>${arrow}<text class="position-label" x="25" y="308">START</text><text class="position-label" x="326" y="308">END</text>${figure(a,kind,'ghost')}${figure(b,kind,'ghost')}<g id="active-figure">${figure(a,kind)}</g>`}
+    const customKinds=['ankle_glide','calf_stretch','squat_hold','heel_squat','cossack_move','calf_tib','supine_rotation','external_iso','internal_iso','side_abduction','band_bridge','supported_cossack','butterfly_lower'];
+    function customState(kind,t,raw=t){
+      const q=(a,b)=>mix(a,b,t);
+      if(kind==='ankle_glide')return{head:P(160,70),shoulder:P(174,102),hip:P(198,166),le:P(245,125),lh:P(324,132),re:P(247,143),rh:P(324,151),lk:q(P(246,222),P(292,220)),lf:P(292,270),rk:P(135,225),rf:P(91,270)};
+      if(kind==='calf_stretch')return{head:P(202,67),shoulder:P(212,102),hip:P(214,165),le:P(260,118),lh:P(325,132),re:P(265,139),rh:P(325,151),lk:q(P(145,220),P(164,235)),lf:P(91,270),rk:P(267,220),rf:P(302,270)};
+      if(kind==='squat_hold'||kind==='heel_squat'){const deep=kind==='squat_hold'?.88:1,tt=t*deep,y=t*48*deep;return{head:P(200,68+y),shoulder:P(200,103+y),hip:P(200,168+y),le:kind==='squat_hold'?P(151,139+y*.45):P(156,139+y),lh:kind==='squat_hold'?P(92,151):P(125,157+y),re:kind==='squat_hold'?P(249,139+y*.45):P(244,139+y),rh:kind==='squat_hold'?P(92,172):P(275,157+y),lk:q(P(155,222),P(127,231)),lf:P(94,270),rk:q(P(245,222),P(273,231)),rf:P(306,270)};}
+      if(kind==='cossack_move'||kind==='supported_cossack'){const range=kind==='supported_cossack'?.64:1,tt=t*range;return{head:q(P(205,69),P(146,107)),shoulder:q(P(205,104),P(153,137)),hip:q(P(205,171),P(137,207)),le:q(P(174,141),P(113,161)),lh:P(73,157),re:q(P(235,140),P(181,167)),rh:P(79,180),lk:q(P(134,224),P(105,232)),lf:P(54,270),rk:q(P(278,226),P(272,247)),rf:P(346,270)};}
+      if(kind==='calf_tib'){const toe=raw<.5?Math.sin(raw*Math.PI*2):0,heel=raw>=.5?Math.sin((raw-.5)*Math.PI*2):0,lift=heel*15;return{head:P(194,61-lift),shoulder:P(195,96-lift),hip:P(196,163-lift),le:P(170,132-lift),lh:P(145,171-lift),re:P(224,132-lift),rh:P(255,169-lift),lk:P(181,220-lift),lf:P(181,268-lift-toe*8),rk:P(214,220-lift),rf:P(222,268-lift-toe*8),toe,heel};}
+      if(kind==='supine_rotation'){const side=Math.sin((raw-.25)*Math.PI*2),x=side*48;return{head:P(200,67),shoulder:P(200,105),hip:P(200,174),le:P(145,125),lh:P(93,132),re:P(255,125),rh:P(307,132),lk:P(175+x,220),lf:P(165+x,265),rk:P(198+x,220),rf:P(190+x,265)};}
+      if(kind==='external_iso')return{head:P(200,68),shoulder:P(200,104),hip:P(200,171),le:P(164,141),lh:P(146,203),re:P(236,141),rh:P(254,203),lk:P(137,218),lf:P(174,270),rk:P(263,218),rf:P(226,270)};
+      if(kind==='internal_iso')return{head:P(200,68),shoulder:P(200,104),hip:P(200,171),le:P(168,142),lh:P(151,200),re:P(232,142),rh:P(249,200),lk:P(132,215),lf:P(174,269),rk:P(268,215),rf:P(226,269)};
+      if(kind==='side_abduction')return{head:P(80,206),shoulder:P(112,211),hip:P(196,220),le:P(132,242),lh:P(104,267),re:P(142,228),rh:P(122,264),lk:P(267,232),lf:P(343,250),rk:q(P(263,217),P(262,182)),rf:q(P(342,215),P(338,143))};
+      if(kind==='band_bridge')return{head:P(75,224),shoulder:P(111,225),hip:q(P(190,232),P(197,174)),le:P(122,249),lh:P(92,269),re:P(148,246),rh:P(130,270),lk:P(267,217),lf:P(310,270),rk:P(247,224),rf:P(280,270)};
+      return{head:P(200,68),shoulder:P(200,104),hip:P(200,178),le:P(167,142),lh:P(145,224),re:P(233,142),rh:P(255,224),lk:q(P(151,214),P(135,244)),lf:P(194,270),rk:q(P(249,214),P(265,244)),rf:P(206,270)};
+    }
+    function customFigure(s,kind,ghost='',pulse=0){
+      const band=kind==='external_iso'?'<path d="M132 207Q200 224 268 207" fill="none" stroke="var(--viz-series-1)" stroke-width="8" stroke-linecap="round" opacity=".75"/>':kind==='band_bridge'?'<path d="M239 202Q258 217 278 208" fill="none" stroke="var(--viz-series-1)" stroke-width="8" stroke-linecap="round" opacity=".75"/>':'';
+      const blocks=kind==='internal_iso'?'<rect x="139" y="248" width="18" height="36" rx="4" fill="var(--background)" stroke="var(--viz-series-1)" stroke-width="3"/><rect x="243" y="248" width="18" height="36" rx="4" fill="var(--background)" stroke="var(--viz-series-1)" stroke-width="3"/>':'';
+      const tension=kind==='external_iso'?`<g opacity="${.35+pulse*.65}"><path class="guide" d="M139 213H105M261 213H295"/></g>`:kind==='internal_iso'?`<g opacity="${.35+pulse*.65}"><path class="guide" d="M170 263H142M230 263H258"/><text class="motion-sub" x="144" y="298">feet press outward gently</text></g>`:'';
+      return `<g class="${ghost}">${blocks}${band}<path class="mannequin-line" d="M${s.hip.x} ${s.hip.y}L${s.lk.x} ${s.lk.y}L${s.lf.x} ${s.lf.y}M${s.hip.x} ${s.hip.y}L${s.rk.x} ${s.rk.y}L${s.rf.x} ${s.rf.y}M${s.shoulder.x-9} ${s.shoulder.y+5}L${s.le.x} ${s.le.y}L${s.lh.x} ${s.lh.y}M${s.shoulder.x+9} ${s.shoulder.y+1}L${s.re.x} ${s.re.y}L${s.rh.x} ${s.rh.y}"/><path class="mannequin-torso" d="${torsoPath(s.shoulder,s.hip)}"/><circle class="mannequin-head" cx="${s.head.x}" cy="${s.head.y}" r="20"/><circle class="mannequin-joint" cx="${s.hip.x}" cy="${s.hip.y}" r="8"/><circle class="mannequin-joint" cx="${s.lk.x}" cy="${s.lk.y}" r="6"/><circle class="mannequin-joint" cx="${s.rk.x}" cy="${s.rk.y}" r="6"/><ellipse class="hand" cx="${s.lh.x}" cy="${s.lh.y}" rx="10" ry="6"/><ellipse class="hand" cx="${s.rh.x}" cy="${s.rh.y}" rx="10" ry="6"/><ellipse class="foot" cx="${s.lf.x}" cy="${s.lf.y}" rx="17" ry="6"/><ellipse class="foot" cx="${s.rf.x}" cy="${s.rf.y}" rx="17" ry="6"/>${tension}</g>`;
+    }
+    const customMeta={
+      ankle_glide:['Heel heavy · foot tripod stays down','Knee glides forward toward the wall','<path class="support" d="M32 276H368M332 58V276"/><path class="guide" d="M246 206Q274 194 302 207"/>'],
+      calf_stretch:['Hands on wall · back heel stays planted','Alternate straight knee and bent knee','<path class="support" d="M32 276H368M332 58V276"/><path class="guide" d="M143 205Q162 218 171 239"/>'],
+      squat_hold:['Hold the post · feet stay planted','Lower the hips between the feet','<path class="support" d="M32 276H368M82 70V276"/><path class="guide" d="M218 172V224"/>'],
+      heel_squat:['Heels supported · knees track over toes','Control the full descent and ascent','<path class="support" d="M32 276H368"/><path d="M70 276L112 276L112 263Z M288 263L288 276L330 276Z" fill="var(--viz-series-1)" opacity=".4"/><path class="guide" d="M218 164V225"/>'],
+      cossack_move:['Wide stance · hold the support','Shift toward the bending knee','<path class="support" d="M32 276H368M72 75V276"/><path class="guide" d="M206 192Q168 211 130 216"/>'],
+      calf_tib:['Use support · move only at the ankles','Toe raise first, then calf raise','<path class="support" d="M32 276H368M270 70V276"/><path class="guide" d="M180 267V233M224 267V233"/>'],
+      supine_rotation:['Shoulders heavy · knees stay together','Move through a small pain-free arc','<path class="support" d="M42 282H358"/><path class="guide" d="M137 232Q200 200 263 232"/>'],
+      external_iso:['Pelvis still · no joint movement','Build gentle outward tension','<path class="support" d="M48 276H352"/>'],
+      internal_iso:['Knees fixed · left side only 20–30%','Build pain-free inward-rotation tension','<path class="support" d="M48 276H352"/>'],
+      side_abduction:['Hips stacked · lower leg stays long','Lift the top leg slightly behind you','<path class="support" d="M35 278H365"/><path class="guide" d="M291 205Q312 175 329 151"/>'],
+      band_bridge:['Shoulders and feet stay grounded','Lift hips; keep light band tension','<path class="support" d="M35 278H365"/><path class="guide" d="M191 224V174"/>'],
+      supported_cossack:['Use support · left range stays shallow','Shift laterally without forcing depth','<path class="support" d="M32 276H368M72 75V276"/><path class="guide" d="M205 194Q177 207 148 216"/>'],
+      butterfly_lower:['Soles together · no added weight','Let gravity lower both knees gently','<path class="support" d="M48 276H352"/><path class="guide" d="M145 213V248M255 213V248"/>']
+    };
+    function customScene(kind){const m=customMeta[kind],a=customState(kind,0,0),b=customState(kind,1,.5),iso=kind.endsWith('_iso'),ghosts=iso?'':customFigure(a,kind,'ghost')+customFigure(b,kind,'ghost'),positions=iso?'':'<text class="position-label" x="25" y="312">START</text><text class="position-label" x="326" y="312">END</text>';return `${m[2]}<text class="motion-note" x="22" y="26">${m[0]}</text><text class="motion-sub" x="22" y="45">${m[1]}</text>${positions}${ghosts}<g id="active-figure">${customFigure(a,kind,'',0)}</g>`;}
+    function drawMotion(){
+      if(!activeKind)return;
+      const t=smooth(phase<.5?phase*2:(1-phase)*2),target=root.querySelector('#active-figure');
+      if(activeKind==='rock')target.innerHTML=figure(rockState(t),activeKind);
+      else if(activeKind==='hamstring')target.innerHTML=figure(hamState(t),activeKind);
+      else if(activeKind==='lifts'){const wave=Math.sin(phase*Math.PI*2),left=smooth(Math.max(0,wave)),right=smooth(Math.max(0,-wave));target.innerHTML=straddleFigure(straddleState(activeKind,0,left,right),activeKind)}
+      else if(customKinds.includes(activeKind)){const pulse=(1+Math.sin(phase*Math.PI*4))/2;target.innerHTML=customFigure(customState(activeKind,t,phase),activeKind,'',pulse)}
+      else target.innerHTML=straddleFigure(straddleState(activeKind,t),activeKind);
+    }
+    function labels(){toggle.textContent=playing?'Pause motion':'Play motion';toggle.setAttribute('aria-pressed',playing?'false':'true')}
+    function render(){list.innerHTML='';data[day].forEach((e,i)=>{const b=document.createElement('button');b.type='button';b.className='btn exercise'+(i===selected?' btn-primary':'');b.textContent=(i+1)+'. '+e[0];b.setAttribute('aria-pressed',i===selected?'true':'false');b.onclick=()=>{selected=i;render()};list.appendChild(b)});const e=data[day][selected];root.querySelector('#name').textContent=e[0];root.querySelector('#dose').textContent=e[1];root.querySelector('#do').textContent=e[3];root.querySelector('#avoid').textContent=e[4];root.querySelector('#setup').textContent='Setup: '+(setup[e[2]]||e[3]);root.querySelector('#pose-title').textContent=e[0]+' demonstration';root.querySelector('#pose-desc').textContent=descriptions[e[2]]||'A simplified exercise setup diagram with a directional cue.';activeKind=['rock','hamstring','tilt','hinge','lifts',...customKinds].includes(e[2])?e[2]:'';controls.hidden=!activeKind;phase=0;lastTime=null;playing=activeKind?!reduced.matches:false;labels();drawing.innerHTML=activeKind?movementScene(activeKind):staticPoses[e[2]];if(activeKind)drawMotion();root.querySelector('#pain').textContent=day==='c'?'Left hip rule: stop immediately for deep pain, pinching, catching, clicking, or instability.':'Intensity rule: mild muscular stretch is okay; joint pain or next-day worsening is not.'}
+    function frame(time){if(activeKind&&playing){if(lastTime!==null)phase=(phase+(time-lastTime)/4200)%1;lastTime=time;drawMotion()}else lastTime=null;requestAnimationFrame(frame)}
+    toggle.onclick=()=>{playing=!playing;lastTime=null;labels()};restart.onclick=()=>{phase=0;lastTime=null;drawMotion()};reduced.addEventListener?.('change',e=>{if(e.matches){playing=false;labels()}});
+    root.querySelectorAll('.day').forEach(b=>b.onclick=()=>{day=b.dataset.day;selected=0;root.querySelectorAll('.day').forEach(x=>{const on=x===b;x.setAttribute('aria-pressed',on?'true':'false');x.className='btn day'+(on?' btn-primary':'')});render()});
+    render();requestAnimationFrame(frame);
+  })();
+  </script>
+</div>
+
+<script id="codex-visualization-tooltip">/* oxlint-disable typescript/no-unsafe-argument, typescript/no-unsafe-call, typescript/no-unsafe-return */
+// Runs inside the visualization sandbox, not the host webview.
+(() => {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set(["top", "right", "bottom", "left"]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =>
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest("[data-tooltip]")
+      : null;
+  const containsTarget = (trigger, target) =>
+    target?.nodeType != null && trigger.contains(target);
+  const getContent = (trigger) =>
+    trigger.getAttribute("data-tooltip")?.trim() ?? "";
+  const getPlacement = (trigger) => {
+    const placement = trigger.getAttribute("data-tooltip-placement");
+    return tooltipPlacements.has(placement) ? placement : "top";
+  };
+  const getTooltip = () => {
+    if (tooltip == null) {
+      tooltip = document.createElement("div");
+      tooltip.id = tooltipId;
+      tooltip.className = "tooltip";
+      tooltip.setAttribute("role", "tooltip");
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) => {
+    const ids = new Set(
+      (trigger.getAttribute("aria-describedby") ?? "")
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute("aria-describedby");
+    } else {
+      trigger.setAttribute("aria-describedby", [...ids].join(" "));
+    }
+  };
+  const clearOpenTimeout = () => {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) => {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) => {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              "--tooltip-available-width",
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              "--tooltip-available-height",
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: "fixed",
+    })
+      .then(({ x, y }) => {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = "visible";
+      })
+      .catch(() => {
+        if (activeTrigger === trigger && request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) => {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = "hidden";
+    floating.style.transform = "translate(0, 0)";
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () => {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) => {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() < skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() => {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(":focus-visible")) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) => {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () => {
+    closeTooltip(false);
+    document.removeEventListener("pointerover", handlePointerOpen);
+    document.removeEventListener("pointerout", handleLeave);
+    document.removeEventListener("focusin", handleFocusIn);
+    document.removeEventListener("focusout", handleLeave);
+    document.removeEventListener("keydown", handleKeyDown);
+    document.removeEventListener("contextmenu", handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener("pointerover", handlePointerOpen);
+  document.addEventListener("pointerout", handleLeave);
+  document.addEventListener("focusin", handleFocusIn);
+  document.addEventListener("focusout", handleLeave);
+  document.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("contextmenu", handleContextMenu);
+  window.addEventListener("pagehide", destroy, { once: true });
+})();
+</script>
+<script id="codex-visualization-lucide-initialization">(() => {
+  const initialize = () => {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById("codex-visualization-lucide")
+    ?.addEventListener("load", initialize, { once: true });
+})();
+</script>
+</body>
+</html>
