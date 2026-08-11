@@ -19,9 +19,18 @@
                 <li>Read my <a href="https://ravibhandia.substack.com/">posts</a></li>
                 <li>Follow my <a href="https://twitter.com/ravi_bhandia">thoughts</a></li>
                 <li>My favorite <a href="quotes.html">quotes</a></li>
+                <li>Open my <a href="stretching.html">Current Stretching Routine App</a></li>
                 <li>Send me a <a href="mailto:ravi@bhandia.com">message</a></li>
             </ol>
         </nav>
+        <section class="anti-ai-control" aria-labelledby="anti-ai-heading">
+            <p class="anti-ai-label" id="anti-ai-heading">Experimental mode</p>
+            <button class="anti-ai-toggle" id="anti-ai-toggle" type="button" aria-pressed="false" aria-describedby="anti-ai-help">
+                Turn on AI anti-patterns
+            </button>
+            <p class="anti-ai-help" id="anti-ai-help">Adds movement chaos, ghost targets, and mild cursor evasion. The switch stays put; press Escape to turn it off.</p>
+            <p class="anti-ai-status" id="anti-ai-status" role="status" aria-live="polite"></p>
+        </section>
         <aside class="ny-epigraph">
             <p class="ny-epigraph-label">Currently</p>
             <blockquote>
@@ -31,5 +40,6 @@
         </aside>
     </main>
     <script src="js/transitions.js"></script>
+    <script src="js/anti-ai.js"></script>
 </body>
 </html>
