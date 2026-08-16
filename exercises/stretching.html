@@ -936,7 +936,7 @@ svg {
         </div>
       </div>
       <div id="motion-controls" class="motion-controls" role="group" aria-label="Animation controls">
-        <button id="motion-toggle" class="btn" type="button" aria-pressed="false">Pause motion</button>
+        <button id="motion-toggle" class="btn" type="button">Pause motion</button>
         <button id="motion-restart" class="btn" type="button">Restart</button>
       </div>
     </div>
@@ -1127,7 +1127,7 @@ svg {
       else if(customKinds.includes(activeKind)){const pulse=(1+Math.sin(phase*Math.PI*4))/2;target.innerHTML=customFigure(customState(activeKind,t,phase),activeKind,'',pulse)}
       else target.innerHTML=straddleFigure(straddleState(activeKind,t),activeKind);
     }
-    function labels(){toggle.textContent=playing?'Pause motion':'Play motion';toggle.setAttribute('aria-pressed',playing?'false':'true')}
+    function labels(){toggle.textContent=playing?'Pause motion':'Play motion'}
     function syncUrl(){const url=new URL(window.location.href);url.searchParams.set('mobility',day);url.searchParams.set('exercise',String(selected+1));window.history.replaceState(null,'',url)}
     function syncDayButtons(){root.querySelectorAll('.day').forEach(x=>{const on=x.dataset.day===day;x.setAttribute('aria-pressed',on?'true':'false');x.className='btn day'+(on?' btn-primary':'')})}
     function render(){

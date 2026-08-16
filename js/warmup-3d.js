@@ -149,19 +149,19 @@
     const controls=document.createElement('div');controls.className='warmup-3d-controls';controls.setAttribute('role','group');controls.setAttribute('aria-label',`${title} animation controls`);
     const toggle=document.createElement('button');toggle.type='button';const restart=document.createElement('button');restart.type='button';restart.textContent='Restart';controls.append(toggle,restart);host.append(kicker,canvas,controls);target.appendChild(host);
     const instance={kind,title,canvas,ctx:canvas.getContext('2d'),toggle,restart,phase:0,playing:!reduced.matches,lastTime:null,visible:true,dirty:true};
-    const labels=()=>{toggle.textContent=instance.playing?'Pause motion':'Play motion';toggle.setAttribute('aria-pressed',instance.playing?'false':'true')};labels();
+    const labels=()=>{toggle.textContent=instance.playing?'Pause motion':'Play motion'};labels();
     toggle.addEventListener('click',()=>{instance.playing=!instance.playing;instance.lastTime=null;instance.dirty=true;labels()});restart.addEventListener('click',()=>{instance.phase=0;instance.lastTime=null;instance.dirty=true});return instance;
   });
 
-  function roundedPanel(ctx,x,y,w,h){ctx.fillStyle='#2b2a28';ctx.beginPath();ctx.roundRect(x,y,w,h,10);ctx.fill();}
+  function roundedPanel(ctx,x,y,w,h,r=10,color='#2b2a28'){ctx.fillStyle=color;ctx.beginPath();if(typeof ctx.roundRect==='function')ctx.roundRect(x,y,w,h,r);else ctx.rect(x,y,w,h);ctx.fill();}
   function drawInstance(instance,time){
     if(instance.playing){if(instance.lastTime!==null)instance.phase=(instance.phase+(time-instance.lastTime)/4200)%1;instance.lastTime=time;instance.dirty=true}else instance.lastTime=null;
     if(!instance.dirty)return;const ctx=instance.ctx,w=720,h=460,t=instance.phase<.5?instance.phase*2:(1-instance.phase)*2,s=t*t*(3-2*t);ctx.clearRect(0,0,w,h);ctx.fillStyle='#1d1c1a';ctx.fillRect(0,0,w,h);
     roundedPanel(ctx,12,10,696,278);ctx.drawImage(renderPose(instance.kind,s,696,278),12,10,696,278);roundedPanel(ctx,12,302,340,146);ctx.drawImage(renderPose(instance.kind,0,340,146),12,302,340,146);roundedPanel(ctx,368,302,340,146);ctx.drawImage(renderPose(instance.kind,1,340,146),368,302,340,146);
-    ctx.font='700 15px ui-monospace, monospace';ctx.fillStyle='#ffffff';ctx.fillText('START',26,326);ctx.fillText('END',382,326);ctx.font='600 15px system-ui, sans-serif';const cue=cues[instance.kind];const cueWidth=Math.min(620,ctx.measureText(cue).width+34);ctx.fillStyle='rgba(17,17,17,.88)';ctx.beginPath();ctx.roundRect((720-cueWidth)/2,247,cueWidth,30,15);ctx.fill();ctx.fillStyle='#8ec8ff';ctx.fillText('↔',((720-cueWidth)/2)+12,268);ctx.fillStyle='#ffffff';ctx.fillText(cue,((720-cueWidth)/2)+32,268);instance.dirty=false;
+    ctx.font='700 15px ui-monospace, monospace';ctx.fillStyle='#ffffff';ctx.fillText('START',26,326);ctx.fillText('END',382,326);ctx.font='600 15px system-ui, sans-serif';const cue=cues[instance.kind];const cueWidth=Math.min(620,ctx.measureText(cue).width+34);roundedPanel(ctx,(720-cueWidth)/2,247,cueWidth,30,15,'rgba(17,17,17,.88)');ctx.fillStyle='#8ec8ff';ctx.fillText('↔',((720-cueWidth)/2)+12,268);ctx.fillStyle='#ffffff';ctx.fillText(cue,((720-cueWidth)/2)+32,268);instance.dirty=false;
   }
 
   if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{const instance=instances.find(item=>item.canvas===entry.target);if(instance){instance.visible=entry.isIntersecting;if(instance.visible)instance.dirty=true}}),{rootMargin:'300px'});instances.forEach(instance=>observer.observe(instance.canvas))}
-  reduced.addEventListener?.('change',event=>{instances.forEach(instance=>{if(event.matches)instance.playing=false;instance.lastTime=null;instance.dirty=true;instance.toggle.textContent=instance.playing?'Pause motion':'Play motion';instance.toggle.setAttribute('aria-pressed',instance.playing?'false':'true')})});
+  reduced.addEventListener?.('change',event=>{instances.forEach(instance=>{if(event.matches)instance.playing=false;instance.lastTime=null;instance.dirty=true;instance.toggle.textContent=instance.playing?'Pause motion':'Play motion'})});
   let previousFrame=0;function frame(time){if(time-previousFrame>42){instances.forEach(instance=>{if(instance.visible||instance.dirty)drawInstance(instance,time)});previousFrame=time}requestAnimationFrame(frame)}requestAnimationFrame(frame);
 })();
