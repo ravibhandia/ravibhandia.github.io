@@ -924,7 +924,7 @@ svg {
           <g id="drawing"></g>
         </svg>
         <div id="pose-3d" class="pose-3d" hidden aria-label="Three-dimensional articulated mannequin demonstration with visible start and end positions">
-          <div class="pilot-badge">3D movement pilot</div>
+          <div class="pilot-badge">3D movement guide</div>
           <div class="m3d-main-frame">
             <canvas id="m3d-main" role="img" aria-label="Animated three-dimensional exercise demonstration"></canvas>
             <div id="m3d-motion-cue" class="m3d-motion-cue">Move with control</div>
@@ -1120,7 +1120,7 @@ svg {
     function drawMotion(){
       if(!activeKind)return;
       const t=smooth(phase<.5?phase*2:(1-phase)*2),target=root.querySelector('#active-figure');
-      if(window.Mobility3D?.available&&['rock','hamstring'].includes(activeKind))window.Mobility3D.setPhase(activeKind,t);
+      if(window.Mobility3D?.available&&window.Mobility3D.supports?.(activeKind))window.Mobility3D.setPhase(activeKind,t,phase);
       if(activeKind==='rock')target.innerHTML=figure(rockState(t),activeKind);
       else if(activeKind==='hamstring')target.innerHTML=figure(hamState(t),activeKind);
       else if(activeKind==='lifts'){const wave=Math.sin(phase*Math.PI*2),left=smooth(Math.max(0,wave)),right=smooth(Math.max(0,-wave));target.innerHTML=straddleFigure(straddleState(activeKind,0,left,right),activeKind)}
@@ -1135,8 +1135,8 @@ svg {
       data[day].forEach((e,i)=>{const b=document.createElement('button');b.type='button';b.className='btn exercise'+(i===selected?' btn-primary':'');b.textContent=(i+1)+'. '+e[0];b.setAttribute('aria-pressed',i===selected?'true':'false');b.onclick=()=>{selected=i;syncUrl();render()};list.appendChild(b)});
       const e=data[day][selected],pose=root.querySelector('.pose'),svg=root.querySelector('#pose-svg');
       root.querySelector('#name').textContent=e[0];root.querySelector('#dose').textContent=e[1];root.querySelector('#do').textContent=e[3];root.querySelector('#avoid').textContent=e[4];root.querySelector('#setup').textContent='Setup: '+(setup[e[2]]||e[3]);root.querySelector('#pose-title').textContent=e[0]+' demonstration';root.querySelector('#pose-desc').textContent=descriptions[e[2]]||'A simplified exercise setup diagram with a directional cue.';
-      activeKind=['rock','hamstring','tilt','hinge','lifts',...customKinds].includes(e[2])?e[2]:'';
-      const use3d=window.Mobility3D?.available&&['rock','hamstring'].includes(activeKind);
+      activeKind=['rock','hamstring','tilt','hinge','lifts','bridge',...customKinds].includes(e[2])?e[2]:'';
+      const use3d=window.Mobility3D?.available&&window.Mobility3D.supports?.(activeKind);
       svg.hidden=use3d;svg.style.display=use3d?'none':'';root.querySelector('#pose-3d').hidden=!use3d;pose.classList.toggle('has-3d',use3d);
       if(use3d)window.Mobility3D.show(activeKind);else window.Mobility3D?.hide();
       controls.hidden=!activeKind;phase=0;lastTime=null;playing=activeKind?!reduced.matches:false;labels();drawing.innerHTML=activeKind?movementScene(activeKind):staticPoses[e[2]];if(activeKind)drawMotion();root.querySelector('#pain').textContent=day==='c'?'Stop if: deep hip pain, pinching, catching, clicking, or instability.':'Stop if: joint pain or symptoms that are worse later that day or the next morning.';
