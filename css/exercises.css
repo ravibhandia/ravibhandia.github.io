@@ -309,6 +309,74 @@ body {
     grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1fr);
 }
 
+.warmup-3d {
+    background: rgba(255, 255, 255, 0.018);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    grid-column: 1 / -1;
+    margin: 2px auto 0;
+    max-width: 760px;
+    padding: 12px;
+    width: 100%;
+}
+
+.nerve-card .warmup-3d {
+    margin-top: 16px;
+    padding: 8px;
+}
+
+.warmup-3d-kicker {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 0 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.warmup-3d canvas {
+    background: #232220;
+    border-radius: 8px;
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.warmup-3d-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 9px;
+}
+
+.warmup-3d-controls button {
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    min-height: 40px;
+    padding: 8px 12px;
+}
+
+.warmup-3d-controls button:hover,
+.warmup-3d-controls button:focus-visible {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.warmup-3d-fallback {
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+}
+
 .movement-label {
     align-self: start;
     border-left: 3px solid var(--accent);
