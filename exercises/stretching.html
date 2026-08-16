@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<title>Pancake Mobility Guide</title>
+<meta name="description" content="Ravi Bhandia's Mobility A, B, and C routines with animated setup, dosage, movement cues, and guardrails.">
+<title>Mobility Routines — Ravi Bhandia</title>
 <style>:root {
   color-scheme: light dark;
   background-color: transparent !important;
@@ -25,8 +26,8 @@
   --secondary-foreground: var(--foreground);
   --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
   --muted-foreground: light-dark(
-    rgb(26 28 31 / 49.4%),
-    rgb(255 255 255 / 49.8%)
+    rgb(26 28 31 / 68%),
+    rgb(255 255 255 / 68%)
   );
   --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
   --accent-foreground: var(--primary);
@@ -822,10 +823,30 @@ svg {
 <body>
 <div id="pmg-root">
   <style>
-    #pmg-root { color: var(--foreground); }
+    #pmg-root { color: var(--foreground); margin:0 auto; max-width:1120px; padding:clamp(12px, 3vw, 34px); }
     #pmg-root .exercise-breadcrumb { color:var(--muted-foreground); display:inline-block; font-size:.85rem; margin-bottom:1rem; text-decoration:none; }
     #pmg-root .exercise-breadcrumb:hover, #pmg-root .exercise-breadcrumb:focus-visible { color:var(--foreground); text-decoration:underline; }
+    #pmg-root .mobility-header { margin-bottom:1.35rem; max-width:760px; }
+    #pmg-root .mobility-kicker { color:var(--primary); font:600 .72rem/1.2 var(--font-mono); letter-spacing:.15em; text-transform:uppercase; }
+    #pmg-root .mobility-title { font-family:Georgia, "Times New Roman", serif; font-size:clamp(2rem, 6vw, 3.6rem); font-weight:400; letter-spacing:-.03em; margin:.45rem 0 .55rem; }
+    #pmg-root .mobility-intro { color:var(--muted-foreground); font-size:1rem; line-height:1.7; }
+    #pmg-root .mobility-updated { color:var(--muted-foreground); font:500 .68rem/1.5 var(--font-mono); margin-top:.65rem; text-transform:uppercase; }
+    #pmg-root .before-title { color:var(--foreground); font-family:Georgia, "Times New Roman", serif; font-size:1.25rem; font-weight:400; margin:1.25rem 0 .65rem; }
+    #pmg-root .before-grid { display:grid; gap:.65rem; grid-template-columns:repeat(4,minmax(0,1fr)); margin:0 0 1rem; }
+    #pmg-root .before-item { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:.8rem; }
+    #pmg-root .before-item span { color:var(--primary); display:block; font:600 .65rem/1 var(--font-mono); letter-spacing:.09em; margin-bottom:.4rem; text-transform:uppercase; }
+    #pmg-root .before-item strong { color:var(--foreground); display:block; font-size:.8rem; font-weight:500; line-height:1.45; }
+    #pmg-root .status-row { display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1.1rem; }
+    #pmg-root .status-chip { border:1px solid var(--border); border-radius:999px; color:var(--muted-foreground); font:600 .65rem/1 var(--font-mono); letter-spacing:.04em; padding:.48rem .62rem; text-transform:uppercase; }
+    #pmg-root .status-chip.required { border-color:color-mix(in srgb, var(--green) 45%, transparent); color:var(--green); }
+    #pmg-root .status-chip.conditional { border-color:color-mix(in srgb, var(--viz-series-2) 48%, transparent); color:var(--viz-series-2); }
+    #pmg-root .status-chip.stop { border-color:color-mix(in srgb, var(--destructive) 48%, transparent); color:var(--destructive); }
+    #pmg-root .status-guidance { gap:.5rem .65rem; margin-bottom:1.6rem; }
+    #pmg-root .status-guidance .status-chip { line-height:1.4; text-transform:none; }
+    #pmg-root .status-guidance .status-chip strong { color:currentColor; font-weight:700; text-transform:uppercase; }
     #pmg-root .days { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+    #pmg-root .btn { min-height:44px; }
+    #pmg-root .day { border-radius:999px; }
     #pmg-root .stage { display:grid; grid-template-columns:minmax(240px, .85fr) minmax(280px, 1.15fr); gap:1rem; align-items:start; }
     #pmg-root .pose-wrap { display:grid; gap:.5rem; }
     #pmg-root .pose { min-height:340px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:color-mix(in srgb, var(--muted) 50%, transparent); border-radius:12px; }
@@ -851,20 +872,36 @@ svg {
     #pmg-root .motion-controls[hidden] { display:none !important; }
     #pmg-root .setup { margin:.6rem 0 0; padding:.65rem .75rem; border-left:3px solid var(--viz-series-1); background:color-mix(in srgb, var(--viz-series-1) 8%, transparent); border-radius:0 8px 8px 0; }
     #pmg-root .steps { display:grid; gap:.5rem; }
-    #pmg-root .exercise { width:100%; text-align:left; }
+    #pmg-root .exercise { min-height:44px; width:100%; text-align:left; }
     #pmg-root .detail { margin-top:1rem; padding-top:.75rem; border-top:1px solid var(--border); }
     #pmg-root .cue { display:grid; grid-template-columns:auto 1fr; gap:.35rem .65rem; margin:.75rem 0; }
-    #pmg-root .cue span:nth-child(odd) { font-weight:500; }
+    #pmg-root .cue span:nth-child(odd) { color:var(--primary); font-family:var(--font-mono); font-size:.72rem; font-weight:600; text-transform:uppercase; }
     #pmg-root .warning { color:var(--foreground); background:color-mix(in srgb, var(--destructive) 12%, transparent); padding:.75rem; border-radius:10px; }
     #pmg-root .footer { margin-top:1rem; padding-top:.75rem; border-top:1px solid var(--border); }
     @media (prefers-reduced-motion: reduce) { #pmg-root .guide { stroke-dasharray:none; } }
-    @media (max-width:620px) { #pmg-root .stage { grid-template-columns:1fr; } #pmg-root .pose { min-height:270px; } #pmg-root .motion-note { font-size:12px; } }
+    @media (max-width:760px) { #pmg-root .before-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width:620px) { #pmg-root .stage { grid-template-columns:1fr; } #pmg-root .pose { min-height:270px; } #pmg-root .motion-note { font-size:12px; } #pmg-root .days { display:grid; } }
+    @media (max-width:420px) { #pmg-root .before-grid { grid-template-columns:1fr; } }
   </style>
   <a class="exercise-breadcrumb" href="index.html">&larr; All exercise routines</a>
-  <div class="days" role="group" aria-label="Choose training day">
-    <button class="btn btn-primary day" data-day="a" aria-pressed="true">Day A · Pancake</button>
-    <button class="btn day" data-day="b" aria-pressed="false">Day B · Ankles + squat</button>
-    <button class="btn day" data-day="c" aria-pressed="false">Day C · Hip control</button>
+  <header class="mobility-header">
+    <p class="mobility-kicker">Current movement library</p>
+    <h1 class="mobility-title">Mobility routines</h1>
+    <p class="mobility-intro">Three canonical routines for pancake and hamstring range, ankle and squat mechanics, and controlled hip rotation.</p>
+    <p class="mobility-updated">Updated August 15, 2026 · Review hip and hamstring restrictions after the August 16 checkpoint</p>
+  </header>
+  <h2 class="before-title">Before you start</h2>
+  <section class="before-grid" aria-label="Mobility overview">
+    <div class="before-item"><span>Duration:</span> <strong>About 12–20 min</strong></div>
+    <div class="before-item"><span>Equipment:</span> <strong>Blocks, cushion, support and optional band</strong></div>
+    <div class="before-item"><span>Timing:</span> <strong>After lifting or separately, including at night</strong></div>
+    <div class="before-item"><span>Stop if:</span> <strong>Joint pain, pinching or worse symptoms later</strong></div>
+  </section>
+  <p class="status-row status-guidance" aria-label="Mobility guidance"><span class="status-chip required"><strong>Order:</strong> Complete the selected routine</span><span class="status-chip conditional"><strong>Adjust:</strong> Reduce range or effort as needed</span><span class="status-chip stop"><strong>Stop:</strong> Joint pain or pinching</span></p>
+  <div class="days" role="group" aria-label="Choose mobility routine">
+    <button class="btn btn-primary day" data-day="a" aria-pressed="true">Mobility A · Pancake + hamstrings</button>
+    <button class="btn day" data-day="b" aria-pressed="false">Mobility B · Ankles + squat</button>
+    <button class="btn day" data-day="c" aria-pressed="false">Mobility C · Hip rotation + control</button>
   </div>
   <div class="stage">
     <div class="pose-wrap">
@@ -885,12 +922,12 @@ svg {
       <section class="detail" aria-live="polite">
         <h3 id="name"></h3>
         <p id="setup" class="setup"></p>
-        <div class="cue"><span>Dose</span><span id="dose"></span><span>Do</span><span id="do"></span><span>Avoid</span><span id="avoid"></span></div>
+        <div class="cue"><span>Dose</span><span id="dose"></span><span>Key cue</span><span id="do"></span><span>Avoid</span><span id="avoid"></span></div>
         <div id="pain" class="warning"></div>
       </section>
     </div>
   </div>
-  <div class="footer text-small"><strong>Weekly rhythm:</strong> A → rest/easy activity → B → rest/easy activity → C → rest. Repeat. Warm up for 5 minutes before every session. Progress range only when symptoms are unchanged later that day and the next morning.</div>
+  <div class="footer text-small"><strong>Weekly rhythm:</strong> Mobility A → rest/easy activity → Mobility B → rest/easy activity → Mobility C → rest. Repeat. Warm up for 5 min before every session. Progress range only when symptoms are unchanged later that day and the next morning.</div>
   <script>
   false && (() => {
     const root = document.getElementById('pmg-root');
@@ -907,28 +944,28 @@ svg {
     };
     const data = {
       a: [
-        ['Adductor rock-back','2 × 8/side','rock','Keep spine long; send hips back slowly.','Twisting the pelvis or forcing groin range.'],
-        ['Half-kneeling hamstring hinge','2 × 30 sec/side','hamstring','Fold from the hip with the front heel down and toes lifted.','Rounding down to chase depth.'],
+        ['Adductor rock-back','2 × 8 per side','rock','Keep spine long; send hips back slowly.','Twisting the pelvis or forcing groin range.'],
+        ['Half-kneeling hamstring hinge','2 × 30 sec per side','hamstring','Fold from the hip with the front heel down and toes lifted.','Rounding down to chase depth.'],
         ['Wide-straddle pelvic tilts','2 × 10','pancake','Sit on blocks; alternate gently between slouch and forward pelvic tilt.','Pulling with the arms.'],
         ['Supported pancake hinge','4 × 20–30 sec','pancake','Hands on blocks; lead forward with the chest.','Head down, rounded back, or groin pain.'],
-        ['Straddle leg lifts','3 × 5/leg','pancake','Hands behind you; lift one heel a few centimeters.','Leaning far backward or holding breath.'],
+        ['Straddle leg lifts','3 × 5 per leg','pancake','Hands behind you; lift one heel a few centimeters.','Leaning far backward or holding breath.'],
         ['Glute bridge + side plank','3 × 10 + 2 × 20 sec','bridge','Brace gently and move with control.','Arching the lower back.']
       ],
       b: [
-        ['Knee-to-wall ankle glide','3 × 8/side','ankle','Drive knee toward wall while the whole heel stays down.','Foot arch collapsing or heel lifting.'],
-        ['Calf + soleus stretch','2 × 30 sec each','ankle','Stretch once straight-kneed and once bent-kneed.','Bouncing into range.'],
+        ['Knee-to-wall ankle glide','3 × 8 per side','ankle','Drive knee toward wall while the whole heel stays down.','Foot arch collapsing or heel lifting.'],
+        ['Calf + soleus stretch','2 × 30 sec per position','ankle','Stretch once straight-kneed and once bent-kneed.','Bouncing into range.'],
         ['Supported squat hold','4 × 20–30 sec','squat','Hold a post; use a small heel lift if needed.','Forcing heels down or hip pinching.'],
-        ['Slow heel-elevated squat','3 × 8','squat','Use a controlled 3-second descent.','Knees collapsing inward.'],
-        ['Assisted Cossack squat','3 × 5/side','cossack','Hold support; sit toward the bent leg.','Dropping lower than you can control.'],
+        ['Slow heel-elevated squat','3 × 8','squat','Use a controlled 3-sec descent.','Knees collapsing inward.'],
+        ['Assisted Cossack squat','3 × 5 per side','cossack','Hold support; sit toward the bent leg.','Dropping lower than you can control.'],
         ['Tibialis + calf raises','3 × 12–15 + 3 × 10','ankle','Use full comfortable ankle motion.','Rushing the lowering phase.']
       ],
       c: [
         ['Gentle supine hip rotations','2 × 8','rotation','Move both knees only through a pain-free arc.','Testing the painful endpoint.'],
         ['External-rotation isometric','3 × 15–20 sec','rotation','Press outward gently without visible movement.','Maximal effort or pelvic twisting.'],
         ['Internal-rotation isometric','3 × 10–15 sec','rotation','Left side: only 20–30% effort and completely pain-free.','Any deep pain, pinch, click, or catch.'],
-        ['Side-lying abduction','3 × 8–12/side','bridge','Keep pelvis stacked; lift slightly behind you.','Rolling backward.'],
+        ['Side-lying abduction','3 × 8–12 per side','bridge','Keep pelvis stacked; lift slightly behind you.','Rolling backward.'],
         ['Band bridge','3 × 10','bridge','Press knees lightly outward; keep ribs down.','Back arch or hamstring cramp.'],
-        ['Supported Cossack','3 × 5/side','cossack','Use a smaller pain-free range on the left.','Rotating into discomfort.'],
+        ['Supported Cossack','3 × 5 per side','cossack','Use a smaller pain-free range on the left.','Rotating into discomfort.'],
         ['Unweighted butterfly','2 × 30 sec','butterfly','Sit on blocks and let gravity do the work.','Weights or hands pressing knees down.'],
         ['Supported pancake hinge','3 × 20 sec','pancake','Finish with an easy, controlled hinge.','Turning it into a max-effort test.']
       ]
@@ -979,13 +1016,16 @@ svg {
       butterfly:'<path class="support" d="M45 275H355"/><circle class="mannequin-head" cx="200" cy="67" r="21"/><path class="mannequin-line" d="M200 90L200 184M200 125L150 182M200 125L250 182M200 184L145 230L200 263M200 184L255 230L200 263"/><path class="guide" d="M130 205L145 232M270 205L255 232"/>'
     };
     const data={
-      a:[['Adductor rock-back','2 × 8/side','rock','Keep spine long; send hips back slowly.','Twisting the pelvis or forcing groin range.'],['Half-kneeling hamstring hinge','2 × 30 sec/side','hamstring','Fold from the hip with the front heel down and toes lifted.','Rounding down to chase depth.'],['Wide-straddle pelvic tilts','2 × 10','tilt','Sit on blocks; alternate gently between slouch and forward pelvic tilt.','Pulling with the arms.'],['Supported pancake hinge','4 × 20–30 sec','hinge','Hands on blocks; lead forward with the chest.','Head down, rounded back, or groin pain.'],['Straddle leg lifts','3 × 5/leg','lifts','Hands behind you; lift one heel a few centimeters.','Leaning far backward or holding breath.'],['Glute bridge + side plank','3 × 10 + 2 × 20 sec','bridge','Brace gently and move with control.','Arching the lower back.']],
-      b:[['Knee-to-wall ankle glide','3 × 8/side','ankle_glide','Drive knee toward wall while the whole heel stays down.','Foot arch collapsing or heel lifting.'],['Calf + soleus stretch','2 × 30 sec each','calf_stretch','Stretch once straight-kneed and once bent-kneed.','Bouncing into range.'],['Supported squat hold','4 × 20–30 sec','squat_hold','Hold a post; use a small heel lift if needed.','Forcing heels down or hip pinching.'],['Slow heel-elevated squat','3 × 8','heel_squat','Use a controlled 3-second descent.','Knees collapsing inward.'],['Assisted Cossack squat','3 × 5/side','cossack_move','Hold support; sit toward the bent leg.','Dropping lower than you can control.'],['Tibialis + calf raises','3 × 12–15 + 3 × 10','calf_tib','Use full comfortable ankle motion.','Rushing the lowering phase.']],
-      c:[['Gentle supine hip rotations','2 × 8','supine_rotation','Move both knees only through a pain-free arc.','Testing the painful endpoint.'],['External-rotation isometric','3 × 15–20 sec','external_iso','Press outward gently without visible movement.','Maximal effort or pelvic twisting.'],['Internal-rotation isometric','3 × 10–15 sec','internal_iso','Left side: only 20–30% effort and completely pain-free.','Any deep pain, pinch, click, or catch.'],['Side-lying abduction','3 × 8–12/side','side_abduction','Keep pelvis stacked; lift slightly behind you.','Rolling backward.'],['Band bridge','3 × 10','band_bridge','Press knees lightly outward; keep ribs down.','Back arch or hamstring cramp.'],['Supported Cossack','3 × 5/side','supported_cossack','Use a smaller pain-free range on the left.','Rotating into discomfort.'],['Unweighted butterfly','2 × 30 sec','butterfly_lower','Sit on blocks and let gravity do the work.','Weights or hands pressing knees down.'],['Supported pancake hinge','3 × 20 sec','hinge','Finish with an easy, controlled hinge.','Turning it into a max-effort test.']]
+      a:[['Adductor rock-back','2 × 8 per side','rock','Keep spine long; send hips back slowly.','Twisting the pelvis or forcing groin range.'],['Half-kneeling hamstring hinge','2 × 30 sec per side','hamstring','Fold from the hip with the front heel down and toes lifted.','Rounding down to chase depth.'],['Wide-straddle pelvic tilts','2 × 10','tilt','Sit on blocks; alternate gently between slouch and forward pelvic tilt.','Pulling with the arms.'],['Supported pancake hinge','4 × 20–30 sec','hinge','Hands on blocks; lead forward with the chest.','Head down, rounded back, or groin pain.'],['Straddle leg lifts','3 × 5 per leg','lifts','Hands behind you; lift one heel a few centimeters.','Leaning far backward or holding breath.'],['Glute bridge + side plank','3 × 10 + 2 × 20 sec','bridge','Brace gently and move with control.','Arching the lower back.']],
+      b:[['Knee-to-wall ankle glide','3 × 8 per side','ankle_glide','Drive knee toward wall while the whole heel stays down.','Foot arch collapsing or heel lifting.'],['Calf + soleus stretch','2 × 30 sec per position','calf_stretch','Stretch once straight-kneed and once bent-kneed.','Bouncing into range.'],['Supported squat hold','4 × 20–30 sec','squat_hold','Hold a post; use a small heel lift if needed.','Forcing heels down or hip pinching.'],['Slow heel-elevated squat','3 × 8','heel_squat','Use a controlled 3-sec descent.','Knees collapsing inward.'],['Assisted Cossack squat','3 × 5 per side','cossack_move','Hold support; sit toward the bent leg.','Dropping lower than you can control.'],['Tibialis + calf raises','3 × 12–15 + 3 × 10','calf_tib','Use full comfortable ankle motion.','Rushing the lowering phase.']],
+      c:[['Gentle supine hip rotations','2 × 8','supine_rotation','Move both knees only through a pain-free arc.','Testing the painful endpoint.'],['External-rotation isometric','3 × 15–20 sec','external_iso','Press outward gently without visible movement.','Maximal effort or pelvic twisting.'],['Internal-rotation isometric','3 × 10–15 sec','internal_iso','Left side: only 20–30% effort and completely pain-free.','Any deep pain, pinch, click, or catch.'],['Side-lying abduction','3 × 8–12 per side','side_abduction','Keep pelvis stacked; lift slightly behind you.','Rolling backward.'],['Band bridge','3 × 10','band_bridge','Press knees lightly outward; keep ribs down.','Back arch or hamstring cramp.'],['Supported Cossack','3 × 5 per side','supported_cossack','Use a smaller pain-free range on the left.','Rotating into discomfort.'],['Unweighted butterfly','2 × 30 sec','butterfly_lower','Sit on blocks and let gravity do the work.','Weights or hands pressing knees down.'],['Supported pancake hinge','3 × 20 sec','hinge','Finish with an easy, controlled hinge.','Turning it into a max-effort test.']]
     };
     const setup={rock:'Plant both hands. Stack one knee under its hip and extend the other leg straight out to the side.',hamstring:'Pad the rear knee. Extend the front leg with heel down and toes raised, then square the hips.',tilt:'Sit on a block in a comfortable straddle. Keep both kneecaps facing the ceiling and place your hands lightly on your thighs.',hinge:'Sit on one or two yoga blocks, a firm cushion, or folded blankets—high enough to tip the pelvis forward without rounding. Open to a comfortable straddle and place both hands on separate blocks in front.',lifts:'Sit on one or two yoga blocks, a firm cushion, or folded blankets if needed to stay tall. Open to a comfortable straddle, plant both hands behind you, and point both kneecaps upward.',ankle_glide:'Face a wall in a short split stance. Keep the working heel and tripod of the foot heavy.',calf_stretch:'Brace both hands on a wall. Step one foot back and keep that heel grounded.',squat_hold:'Hold a sturdy post at chest height. Set the feet comfortably wide and use a small heel lift if needed.',heel_squat:'Place both heels on a stable wedge. Stand tall with knees tracking over the middle toes.',cossack_move:'Take a wide stance and hold a sturdy support. Keep the long-leg heel grounded.',calf_tib:'Stand beside a support with feet parallel. Move slowly through the full comfortable ankle range.',supine_rotation:'Lie on your back with shoulders heavy and knees bent together. Brace gently.',external_iso:'Sit tall with knees bent and a band or your hands outside the knees. Keep the pelvis still.',internal_iso:'Sit tall with knees fixed apart and feet inside two stable blocks. Use only gentle effort on the left.',side_abduction:'Lie on your side with head supported, hips stacked, and the lower leg long.',band_bridge:'Lie on your back with feet planted and a loop band above the knees. Keep ribs quiet.',supported_cossack:'Hold a support in a wide stance. Use a deliberately shallow range on the left.',butterfly_lower:'Sit on blocks, bring soles together, and support yourself behind the hips. Add no external weight.'};
     const descriptions={rock:'An articulated mannequin keeps both hands planted as the hips travel backward over the kneeling leg. The opposite leg remains extended laterally and the spine stays long.',hamstring:'A side-view articulated mannequin hinges its long torso forward from the hip while the supported rear knee, extended front heel, and raised toes remain fixed.',tilt:'A seated articulated mannequin alternates between a small posterior pelvic roll and a forward pelvic tilt while both straddled legs remain still.',hinge:'A seated articulated mannequin keeps both straddled legs fixed and hinges its long torso forward from the hips toward two support blocks.',lifts:'A supported seated mannequin alternately lifts the left and right heel from a wide straddle without rocking the torso backward.',ankle_glide:'A side-view mannequin drives the front knee toward the wall while the working heel and foot stay planted.',calf_stretch:'A wall-supported mannequin alternates a straight and softly bent back knee while the back heel remains down.',squat_hold:'A front-view mannequin uses a post for balance and lowers its hips between the feet into a supported squat.',heel_squat:'A front-view mannequin descends over a heel wedge with both knees tracking outward and the torso controlled.',cossack_move:'A wide-stance mannequin shifts its pelvis over one bending knee while the opposite leg remains long.',calf_tib:'A side-view mannequin alternates a heel-down toe raise and a toe-down calf raise at the ankle.',supine_rotation:'A supine mannequin keeps its shoulders down while both bent knees travel together through a small side-to-side arc.',external_iso:'A seated mannequin remains visibly still while outward tension cues pulse against the band at the knees.',internal_iso:'A seated mannequin remains visibly still while gentle internal-rotation pressure cues pulse outward at the feet.',side_abduction:'A side-lying mannequin keeps the pelvis stacked while the upper leg lifts slightly behind the body.',band_bridge:'A supine mannequin raises the pelvis by extending the hips while maintaining light outward band tension.',supported_cossack:'A supported mannequin performs a deliberately shallow lateral shift with the opposite leg long.',butterfly_lower:'A seated mannequin keeps the feet together while both knees lower gently under their own weight.'};
-    let day='a',selected=0,phase=0,playing=!reduced.matches,lastTime=null,activeKind='';
+    const params=new URLSearchParams(window.location.search),requestedDay=params.get('mobility');
+    let day=['a','b','c'].includes(requestedDay)?requestedDay:'a';
+    const requestedExercise=Number.parseInt(params.get('exercise')||'1',10);
+    let selected=Number.isFinite(requestedExercise)?Math.min(data[day].length-1,Math.max(0,requestedExercise-1)):0,phase=0,playing=!reduced.matches,lastTime=null,activeKind='';
     const P=(x,y)=>({x,y}), mix=(a,b,t)=>P(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t), smooth=t=>t*t*(3-2*t);
     function torsoPath(s,h){const dx=h.x-s.x,dy=h.y-s.y,l=Math.hypot(dx,dy)||1,nx=-dy/l,ny=dx/l;return `M${s.x+nx*20} ${s.y+ny*20}L${s.x-nx*20} ${s.y-ny*20}L${h.x-nx*25} ${h.y-ny*25}L${h.x+nx*25} ${h.y+ny*25}Z`;}
     function rockState(t){return{hip:mix(P(225,165),P(165,204),t),shoulder:mix(P(174,120),P(122,164),t),head:mix(P(147,91),P(98,134),t),le:mix(P(135,181),P(116,207),t),re:mix(P(165,184),P(145,211),t),lh:P(96,255),rh:P(145,255),knee:mix(P(220,244),P(180,245),t),foot:mix(P(207,270),P(214,270),t),sideKnee:mix(P(286,238),P(270,247),t),sideFoot:P(350,270)}}
@@ -1062,11 +1102,13 @@ svg {
       else target.innerHTML=straddleFigure(straddleState(activeKind,t),activeKind);
     }
     function labels(){toggle.textContent=playing?'Pause motion':'Play motion';toggle.setAttribute('aria-pressed',playing?'false':'true')}
-    function render(){list.innerHTML='';data[day].forEach((e,i)=>{const b=document.createElement('button');b.type='button';b.className='btn exercise'+(i===selected?' btn-primary':'');b.textContent=(i+1)+'. '+e[0];b.setAttribute('aria-pressed',i===selected?'true':'false');b.onclick=()=>{selected=i;render()};list.appendChild(b)});const e=data[day][selected];root.querySelector('#name').textContent=e[0];root.querySelector('#dose').textContent=e[1];root.querySelector('#do').textContent=e[3];root.querySelector('#avoid').textContent=e[4];root.querySelector('#setup').textContent='Setup: '+(setup[e[2]]||e[3]);root.querySelector('#pose-title').textContent=e[0]+' demonstration';root.querySelector('#pose-desc').textContent=descriptions[e[2]]||'A simplified exercise setup diagram with a directional cue.';activeKind=['rock','hamstring','tilt','hinge','lifts',...customKinds].includes(e[2])?e[2]:'';controls.hidden=!activeKind;phase=0;lastTime=null;playing=activeKind?!reduced.matches:false;labels();drawing.innerHTML=activeKind?movementScene(activeKind):staticPoses[e[2]];if(activeKind)drawMotion();root.querySelector('#pain').textContent=day==='c'?'Left hip rule: stop immediately for deep pain, pinching, catching, clicking, or instability.':'Intensity rule: mild muscular stretch is okay; joint pain or next-day worsening is not.'}
+    function syncUrl(){const url=new URL(window.location.href);url.searchParams.set('mobility',day);url.searchParams.set('exercise',String(selected+1));window.history.replaceState(null,'',url)}
+    function syncDayButtons(){root.querySelectorAll('.day').forEach(x=>{const on=x.dataset.day===day;x.setAttribute('aria-pressed',on?'true':'false');x.className='btn day'+(on?' btn-primary':'')})}
+    function render(){list.innerHTML='';data[day].forEach((e,i)=>{const b=document.createElement('button');b.type='button';b.className='btn exercise'+(i===selected?' btn-primary':'');b.textContent=(i+1)+'. '+e[0];b.setAttribute('aria-pressed',i===selected?'true':'false');b.onclick=()=>{selected=i;syncUrl();render()};list.appendChild(b)});const e=data[day][selected];root.querySelector('#name').textContent=e[0];root.querySelector('#dose').textContent=e[1];root.querySelector('#do').textContent=e[3];root.querySelector('#avoid').textContent=e[4];root.querySelector('#setup').textContent='Setup: '+(setup[e[2]]||e[3]);root.querySelector('#pose-title').textContent=e[0]+' demonstration';root.querySelector('#pose-desc').textContent=descriptions[e[2]]||'A simplified exercise setup diagram with a directional cue.';activeKind=['rock','hamstring','tilt','hinge','lifts',...customKinds].includes(e[2])?e[2]:'';controls.hidden=!activeKind;phase=0;lastTime=null;playing=activeKind?!reduced.matches:false;labels();drawing.innerHTML=activeKind?movementScene(activeKind):staticPoses[e[2]];if(activeKind)drawMotion();root.querySelector('#pain').textContent=day==='c'?'Stop if: deep hip pain, pinching, catching, clicking, or instability.':'Stop if: joint pain or symptoms that are worse later that day or the next morning.'}
     function frame(time){if(activeKind&&playing){if(lastTime!==null)phase=(phase+(time-lastTime)/4200)%1;lastTime=time;drawMotion()}else lastTime=null;requestAnimationFrame(frame)}
     toggle.onclick=()=>{playing=!playing;lastTime=null;labels()};restart.onclick=()=>{phase=0;lastTime=null;drawMotion()};reduced.addEventListener?.('change',e=>{if(e.matches){playing=false;labels()}});
-    root.querySelectorAll('.day').forEach(b=>b.onclick=()=>{day=b.dataset.day;selected=0;root.querySelectorAll('.day').forEach(x=>{const on=x===b;x.setAttribute('aria-pressed',on?'true':'false');x.className='btn day'+(on?' btn-primary':'')});render()});
-    render();requestAnimationFrame(frame);
+    root.querySelectorAll('.day').forEach(b=>b.onclick=()=>{day=b.dataset.day;selected=0;syncDayButtons();syncUrl();render()});
+    syncDayButtons();render();requestAnimationFrame(frame);
   })();
   </script>
 </div>
