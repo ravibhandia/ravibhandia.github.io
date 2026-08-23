@@ -58,7 +58,7 @@ body {
 .routine-grid {
     display: grid;
     gap: 16px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .routine-card {
@@ -171,7 +171,7 @@ body {
 .timing-guide-items {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .timing-guide-items p {
