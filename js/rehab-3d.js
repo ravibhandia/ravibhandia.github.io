@@ -14,11 +14,19 @@
   };
 
   const cues = {
-    tfl_release: 'Small knee bend moves the muscle over the ball',
-    hip_flexor: 'Tuck pelvis, squeeze left glute, then shift forward',
-    prone_ir: 'Left foot moves out while thigh and pelvis stay down',
-    rear_90_90: 'Right leg front; left leg rear; pelvis sinks gently',
-    windshield: 'Both knees travel side to side while feet stay planted'
+    tfl_release: 'Bend and straighten the knees; keep the ball on muscle',
+    hip_flexor: 'Left knee stays down as the tucked pelvis shifts forward',
+    prone_ir: 'Left foot arcs outward; left thigh and pelvis stay down',
+    rear_90_90: 'Right leg is forward; left rear hip lowers toward the mat',
+    windshield: 'Both knees tip left and right while both feet stay planted'
+  };
+
+  const orientationTags = {
+    tfl_release: ['BALL: OUTER-FRONT HIP', 'KNEES BEND'],
+    hip_flexor: ['BLUE: LEFT KNEE DOWN', 'RIGHT FOOT FORWARD'],
+    prone_ir: ['LEFT THIGH STAYS DOWN', 'LEFT FOOT ARCS OUT'],
+    rear_90_90: ['RIGHT LEG: FRONT', 'BLUE LEFT LEG: REAR'],
+    windshield: ['FEET STAY PLANTED', 'KNEES TIP TOGETHER']
   };
 
   if (!THREE) {
@@ -50,28 +58,28 @@
   function startPose(kind) {
     if (kind === 'tfl_release') {
       const pose = standingPose(0);
-      Object.values(pose).forEach(point => { point.x -= .12; });
+      Object.values(pose).forEach(point => { point.x += .06; });
       return pose;
     }
     if (kind === 'hip_flexor') return {
-      pelvis:V(-.12,1.16,0), shoulder:V(-.12,2.02,0), head:V(-.12,2.48,0),
-      shoulderL:V(-.30,2.02,.08), shoulderR:V(.06,2.02,-.08), elbowL:V(-.45,1.57,.12), elbowR:V(.24,1.57,-.12), wristL:V(-.38,1.12,.14), wristR:V(.31,1.12,-.14),
-      hipL:V(-.26,1.13,.08), hipR:V(.02,1.13,-.08), kneeL:V(-.82,.25,.08), kneeR:V(.55,.67,-.08), ankleL:V(-.93,.08,.08), ankleR:V(.76,.08,-.08), toeL:V(-.56,.06,.08), toeR:V(1.05,.06,-.08)
+      pelvis:V(-.08,1.12,0), shoulder:V(-.08,1.98,0), head:V(-.08,2.44,0),
+      shoulderL:V(-.26,1.98,.08), shoulderR:V(.10,1.98,-.08), elbowL:V(-.39,1.53,.12), elbowR:V(.27,1.53,-.12), wristL:V(-.31,1.08,.14), wristR:V(.33,1.08,-.14),
+      hipL:V(-.21,1.09,.08), hipR:V(.05,1.09,-.08), kneeL:V(-.29,.11,.08), kneeR:V(.62,.66,-.08), ankleL:V(-.87,.08,.08), ankleR:V(.65,.08,-.08), toeL:V(-1.13,.06,.08), toeR:V(1.00,.06,-.08)
     };
     if (kind === 'prone_ir') return {
-      pelvis:V(.25,.31,0), shoulder:V(-.62,.39,0), head:V(-1.12,.45,0),
-      shoulderL:V(-.64,.37,.18), shoulderR:V(-.64,.37,-.18), elbowL:V(-.92,.18,.45), elbowR:V(-.92,.18,-.45), wristL:V(-1.22,.10,.52), wristR:V(-1.22,.10,-.52),
-      hipL:V(.25,.29,.18), hipR:V(.25,.29,-.18), kneeL:V(.87,.20,.18), kneeR:V(.94,.12,-.18), ankleL:V(.87,1.02,.18), ankleR:V(1.53,.09,-.18), toeL:V(.87,1.15,.18), toeR:V(1.78,.07,-.18)
+      pelvis:V(.18,.29,0), shoulder:V(-.65,.35,0), head:V(-1.14,.39,0),
+      shoulderL:V(-.66,.33,.20), shoulderR:V(-.66,.33,-.20), elbowL:V(-.94,.15,.45), elbowR:V(-.94,.15,-.45), wristL:V(-1.25,.08,.50), wristR:V(-1.25,.08,-.50),
+      hipL:V(.18,.27,.20), hipR:V(.18,.27,-.20), kneeL:V(.82,.13,.20), kneeR:V(.91,.10,-.20), ankleL:V(.82,.80,.20), ankleR:V(1.53,.08,-.20), toeL:V(.57,.80,.20), toeR:V(1.78,.06,-.20)
     };
     if (kind === 'rear_90_90') return {
-      pelvis:V(0,.48,0), shoulder:V(-.05,1.43,0), head:V(-.07,1.91,0),
-      shoulderL:V(-.24,1.42,.10), shoulderR:V(.14,1.42,-.10), elbowL:V(-.55,.92,.28), elbowR:V(.45,.92,-.32), wristL:V(-.70,.10,.35), wristR:V(.62,.10,-.43),
-      hipL:V(-.13,.42,.14), hipR:V(.13,.42,-.14), kneeL:V(.52,.10,-.55), kneeR:V(-.50,.10,.58), ankleL:V(1.02,.08,-.48), ankleR:V(-1.00,.08,.46), toeL:V(1.22,.07,-.40), toeR:V(-1.20,.07,.37)
+      pelvis:V(0,.64,0), shoulder:V(-.03,1.56,0), head:V(-.04,2.02,0),
+      shoulderL:V(-.22,1.55,.10), shoulderR:V(.16,1.55,-.10), elbowL:V(-.51,1.02,.28), elbowR:V(.47,1.02,-.32), wristL:V(-.66,.16,.35), wristR:V(.62,.16,-.43),
+      hipL:V(-.13,.56,.14), hipR:V(.13,.56,-.14), kneeL:V(.54,.10,-.57), kneeR:V(-.53,.10,.60), ankleL:V(1.06,.08,-.50), ankleR:V(-1.04,.08,.47), toeL:V(1.26,.07,-.41), toeR:V(-1.24,.07,.38)
     };
     if (kind === 'windshield') return {
-      pelvis:V(0,.48,0), shoulder:V(-.12,1.38,-.12), head:V(-.17,1.85,-.16),
-      shoulderL:V(-.31,1.37,-.04), shoulderR:V(.07,1.37,-.20), elbowL:V(-.60,.83,-.35), elbowR:V(.39,.83,-.48), wristL:V(-.72,.10,-.54), wristR:V(.52,.10,-.68),
-      hipL:V(-.14,.43,.09), hipR:V(.14,.43,-.09), kneeL:V(-.54,.72,.45), kneeR:V(.54,.72,.36), ankleL:V(-.78,.08,.78), ankleR:V(.78,.08,.72), toeL:V(-.96,.06,.90), toeR:V(.96,.06,.84)
+      pelvis:V(0,.50,-.05), shoulder:V(0,1.39,-.34), head:V(0,1.86,-.48),
+      shoulderL:V(-.20,1.38,-.25), shoulderR:V(.20,1.38,-.43), elbowL:V(-.47,.82,-.60), elbowR:V(.47,.82,-.68), wristL:V(-.58,.09,-.78), wristR:V(.58,.09,-.86),
+      hipL:V(-.14,.44,.05), hipR:V(.14,.44,-.05), kneeL:V(-.46,.77,.47), kneeR:V(.46,.77,.47), ankleL:V(-.86,.08,.78), ankleR:V(.86,.08,.78), toeL:V(-1.06,.06,.91), toeR:V(1.06,.06,.91)
     };
     return standingPose(0);
   }
@@ -79,31 +87,29 @@
   function endPose(kind) {
     if (kind === 'tfl_release') {
       const pose = standingPose(1);
-      Object.values(pose).forEach(point => { point.x += .05; });
+      Object.values(pose).forEach(point => { point.x -= .10; });
       return pose;
     }
     const pose = copyPose(startPose(kind));
     if (kind === 'hip_flexor') {
-      const shift = ['pelvis','shoulder','head','shoulderL','shoulderR','hipL','hipR'];
-      shift.forEach(key => { pose[key].x += .20; });
-      pose.shoulder.x += .08; pose.head.x += .14;
-      pose.shoulderL.set(-.02,2.05,.08); pose.elbowL.set(.13,2.52,.10); pose.wristL.set(.30,2.91,.12);
-      pose.shoulderR.x += .16; pose.elbowR.x += .16; pose.wristR.x += .16;
+      ['pelvis','shoulder','head','shoulderL','shoulderR','hipL','hipR'].forEach(key => { pose[key].x += .17; });
+      pose.shoulder.x += .04; pose.head.x += .08;
+      pose.shoulderL.set(.02,2.02,.08); pose.elbowL.set(.17,2.46,.10); pose.wristL.set(.33,2.84,.12);
+      pose.shoulderR.x += .11; pose.elbowR.x += .11; pose.wristR.x += .11;
       return pose;
     }
     if (kind === 'prone_ir') {
-      pose.ankleL.z = .83; pose.toeL.z = 1.00;
-      pose.ankleL.x = .85; pose.toeL.x = .84;
+      pose.ankleL.set(.82,.60,.80); pose.toeL.set(.59,.60,1.00);
       return pose;
     }
     if (kind === 'rear_90_90') {
-      ['pelvis','shoulder','head','shoulderL','shoulderR','elbowL','elbowR'].forEach(key => { pose[key].y -= .14; pose[key].x += .06; pose[key].z -= .08; });
-      pose.wristL.y = .08; pose.wristR.y = .08;
+      ['pelvis','shoulder','head','shoulderL','shoulderR','elbowL','elbowR','hipL','hipR'].forEach(key => { pose[key].y -= .22; pose[key].x += .04; pose[key].z -= .08; });
+      pose.wristL.y = .09; pose.wristR.y = .09;
       return pose;
     }
     if (kind === 'windshield') {
-      pose.kneeL.set(.05,.43,.56); pose.kneeR.set(.90,.43,.46);
-      pose.hipL.z = .16; pose.hipR.z = -.02;
+      pose.kneeL.set(-.88,.29,.57); pose.kneeR.set(-.05,.34,.57);
+      pose.hipL.z = .12; pose.hipR.z = .02;
       return pose;
     }
     return pose;
@@ -118,8 +124,9 @@
   const torsoMaterial = new THREE.MeshStandardMaterial({color:0xc9a87c,roughness:.48,metalness:.08});
   const jointMaterial = new THREE.MeshStandardMaterial({color:0x77736e,roughness:.48,metalness:.14});
   const leftMaterial = new THREE.MeshStandardMaterial({color:0x8ec8ff,roughness:.55,metalness:.05});
-  const supportMaterial = new THREE.MeshStandardMaterial({color:0x5a5753,roughness:.86,metalness:0});
-  const accentMaterial = new THREE.MeshStandardMaterial({color:0x9b7653,roughness:.72,metalness:.02});
+  const supportMaterial = new THREE.MeshStandardMaterial({color:0x3d3b38,roughness:.9,metalness:0});
+  const accentMaterial = new THREE.MeshStandardMaterial({color:0x8b6f50,roughness:.78,metalness:.02});
+  const ballMaterial = new THREE.MeshStandardMaterial({color:0xf0a65a,roughness:.6,metalness:.02,emissive:0x2d1405,emissiveIntensity:.35});
   const cylinderGeometry = new THREE.CylinderGeometry(1,1,1,18,1,false);
   const torsoGeometry = new THREE.CylinderGeometry(.78,1,1,24,1,false);
   const sphereGeometry = new THREE.SphereGeometry(1,22,14);
@@ -149,10 +156,10 @@
   let renderer,scene,camera,rig,floor,wall,ball,mat,kneePad,blockL,blockR;
   try {
     const master=document.createElement('canvas');renderer=new THREE.WebGLRenderer({canvas:master,antialias:true,alpha:true,powerPreference:'high-performance'});renderer.setPixelRatio(1);renderer.outputEncoding=THREE.sRGBEncoding;
-    scene=new THREE.Scene();camera=new THREE.OrthographicCamera(-2,2,2,-2,.1,30);scene.add(new THREE.HemisphereLight(0xfaf7f1,0x292725,1.55));
-    const keyLight=new THREE.DirectionalLight(0xffffff,1.35);keyLight.position.set(4,6,5);scene.add(keyLight);const rimLight=new THREE.DirectionalLight(0x8ec8ff,.65);rimLight.position.set(-4,3,-4);scene.add(rimLight);
+    scene=new THREE.Scene();camera=new THREE.OrthographicCamera(-2,2,2,-2,.1,30);scene.add(new THREE.HemisphereLight(0xfaf7f1,0x292725,.95));
+    const keyLight=new THREE.DirectionalLight(0xffffff,.85);keyLight.position.set(4,6,5);scene.add(keyLight);const rimLight=new THREE.DirectionalLight(0x8ec8ff,.38);rimLight.position.set(-4,3,-4);scene.add(rimLight);
     floor=new THREE.Mesh(new THREE.PlaneGeometry(7,7),new THREE.MeshStandardMaterial({color:0x242321,roughness:.95}));floor.rotation.x=-Math.PI/2;scene.add(floor);
-    wall=addSupport(scene,new THREE.BoxGeometry(3.6,3.1,.08));ball=addSupport(scene,new THREE.SphereGeometry(.14,20,14),accentMaterial);mat=addSupport(scene,new THREE.BoxGeometry(3.8,.04,2.2),accentMaterial);kneePad=addSupport(scene,new THREE.CylinderGeometry(.28,.28,.05,24),accentMaterial);blockL=addSupport(scene,new THREE.BoxGeometry(.28,.30,.42),accentMaterial);blockR=addSupport(scene,new THREE.BoxGeometry(.28,.30,.42),accentMaterial);rig=createRig(scene);
+    wall=addSupport(scene,new THREE.BoxGeometry(.10,3.1,1.8));ball=addSupport(scene,new THREE.SphereGeometry(.16,24,16),ballMaterial);mat=addSupport(scene,new THREE.BoxGeometry(3.8,.04,2.2),accentMaterial);kneePad=addSupport(scene,new THREE.CylinderGeometry(.30,.30,.055,24),accentMaterial);blockL=addSupport(scene,new THREE.BoxGeometry(.30,.32,.44),accentMaterial);blockR=addSupport(scene,new THREE.BoxGeometry(.30,.32,.44),accentMaterial);rig=createRig(scene);
   } catch(error) {
     targets.forEach(target=>{const note=document.createElement('p');note.className='warmup-3d-fallback';note.textContent='The 3D guide is unavailable in this browser. Follow the written setup and movement cues.';target.appendChild(note);});
     console.warn('Hip rehab 3D guides could not initialize.',error);return;
@@ -160,16 +167,19 @@
 
   function configureSupports(kind){
     [wall,ball,mat,kneePad,blockL,blockR].forEach(item=>{item.visible=false;});
-    if(kind==='tfl_release'){wall.visible=true;wall.position.set(0,1.45,-.62);ball.visible=true;ball.position.set(-.34,1.25,-.30);}
+    if(kind==='tfl_release'){wall.visible=true;wall.position.set(-.82,1.45,0);ball.visible=true;ball.position.set(-.47,1.20,.16);}
     if(['hip_flexor','prone_ir','rear_90_90','windshield'].includes(kind)){mat.visible=true;mat.position.set(0,.025,0);}
-    if(kind==='hip_flexor'){kneePad.visible=true;kneePad.position.set(-.82,.05,.08);}
-    if(kind==='rear_90_90'){blockL.visible=true;blockL.position.set(-.70,.16,.35);blockR.visible=true;blockR.position.set(.62,.16,-.43);}
+    if(kind==='hip_flexor'){kneePad.visible=true;kneePad.position.set(-.29,.045,.08);}
+    if(kind==='rear_90_90'){blockL.visible=true;blockL.position.set(-.66,.16,.35);blockR.visible=true;blockR.position.set(.62,.16,-.43);}
   }
 
   function renderPose(kind,t,width,height){
-    renderer.setSize(width,height,false);const aspect=width/height;let viewSize=1.68,target=V(0,1.25,0),position=V(.15,2.45,6.2);
-    if(kind==='prone_ir'){viewSize=1.45;target=V(.15,.55,0);position=V(2.5,3.6,5.0);}
-    if(['rear_90_90','windshield'].includes(kind)){viewSize=1.48;target=V(0,.82,0);position=V(3.2,2.8,5.1);}
+    renderer.setSize(width,height,false);const aspect=width/height;let viewSize=1.62,target=V(0,1.30,0),position=V(.10,2.35,6.4);
+    if(kind==='tfl_release'){viewSize=1.58;target=V(-.12,1.28,0);position=V(2.25,2.30,5.6);}
+    if(kind==='hip_flexor'){viewSize=1.88;target=V(0,1.23,0);position=V(.15,2.18,6.4);}
+    if(kind==='prone_ir'){viewSize=1.38;target=V(.15,.52,.10);position=V(2.9,4.35,5.5);}
+    if(kind==='rear_90_90'){viewSize=1.42;target=V(0,.90,0);position=V(3.3,3.35,5.25);}
+    if(kind==='windshield'){viewSize=1.40;target=V(0,.86,.10);position=V(1.9,4.25,5.4);}
     camera.left=-viewSize*aspect;camera.right=viewSize*aspect;camera.top=viewSize;camera.bottom=-viewSize;camera.position.copy(position);camera.lookAt(target);camera.updateProjectionMatrix();
     const pose=poseAt(kind,t);updateRig(rig,pose);configureSupports(kind);renderer.render(scene,camera);return renderer.domElement;
   }
@@ -188,11 +198,17 @@
   });
 
   function roundedPanel(ctx,x,y,w,h,r=10,color='#2b2a28'){ctx.fillStyle=color;ctx.beginPath();if(typeof ctx.roundRect==='function')ctx.roundRect(x,y,w,h,r);else ctx.rect(x,y,w,h);ctx.fill();}
+  function drawOrientationTags(ctx,kind){
+    const [leftTag,rightTag]=orientationTags[kind];ctx.font='700 11px ui-monospace, monospace';
+    const leftWidth=ctx.measureText(leftTag).width+18,rightWidth=ctx.measureText(rightTag).width+18;
+    roundedPanel(ctx,26,24,leftWidth,24,12,'rgba(17,17,17,.84)');roundedPanel(ctx,694-rightWidth,24,rightWidth,24,12,'rgba(17,17,17,.84)');
+    ctx.fillStyle='#8ec8ff';ctx.fillText(leftTag,35,40);ctx.fillStyle='#f0d6b3';ctx.fillText(rightTag,703-rightWidth,40);
+  }
   function drawInstance(instance,time){
     if(instance.playing){if(instance.lastTime!==null)instance.phase=(instance.phase+(time-instance.lastTime)/4400)%1;instance.lastTime=time;instance.dirty=true;}else instance.lastTime=null;
     if(!instance.dirty)return;const ctx=instance.ctx,w=720,h=460,progress=instance.phase<.5?instance.phase*2:(1-instance.phase)*2,smooth=progress*progress*(3-2*progress);ctx.clearRect(0,0,w,h);ctx.fillStyle='#1d1c1a';ctx.fillRect(0,0,w,h);
-    roundedPanel(ctx,12,10,696,278);ctx.drawImage(renderPose(instance.kind,smooth,696,278),12,10,696,278);roundedPanel(ctx,12,302,340,146);ctx.drawImage(renderPose(instance.kind,0,340,146),12,302,340,146);roundedPanel(ctx,368,302,340,146);ctx.drawImage(renderPose(instance.kind,1,340,146),368,302,340,146);
-    ctx.font='700 15px ui-monospace, monospace';ctx.fillStyle='#fff';ctx.fillText('START',26,326);ctx.fillText('END',382,326);ctx.font='600 15px system-ui, sans-serif';const cue=cues[instance.kind],cueWidth=Math.min(650,ctx.measureText(cue).width+38);roundedPanel(ctx,(720-cueWidth)/2,247,cueWidth,30,15,'rgba(17,17,17,.88)');ctx.fillStyle='#8ec8ff';ctx.fillText('↔',(720-cueWidth)/2+12,268);ctx.fillStyle='#fff';ctx.fillText(cue,(720-cueWidth)/2+33,268);instance.dirty=false;
+    roundedPanel(ctx,12,10,696,252);ctx.drawImage(renderPose(instance.kind,smooth,696,252),12,10,696,252);drawOrientationTags(ctx,instance.kind);roundedPanel(ctx,12,302,340,146);ctx.drawImage(renderPose(instance.kind,0,340,146),12,302,340,146);roundedPanel(ctx,368,302,340,146);ctx.drawImage(renderPose(instance.kind,1,340,146),368,302,340,146);
+    ctx.font='700 15px ui-monospace, monospace';ctx.fillStyle='#fff';ctx.fillText('START',26,326);ctx.fillText('END',382,326);ctx.font='600 15px system-ui, sans-serif';const cue=cues[instance.kind],cueWidth=Math.min(650,ctx.measureText(cue).width+38);roundedPanel(ctx,(720-cueWidth)/2,266,cueWidth,30,15,'rgba(17,17,17,.92)');ctx.fillStyle='#8ec8ff';ctx.fillText('↔',(720-cueWidth)/2+12,287);ctx.fillStyle='#fff';ctx.fillText(cue,(720-cueWidth)/2+33,287);instance.dirty=false;
   }
 
   if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{const instance=instances.find(item=>item.canvas===entry.target);if(instance){instance.visible=entry.isIntersecting;if(instance.visible)instance.dirty=true;}}),{rootMargin:'300px'});instances.forEach(instance=>observer.observe(instance.canvas));}
