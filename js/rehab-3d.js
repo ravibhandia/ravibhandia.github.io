@@ -79,7 +79,7 @@
     if (kind === 'windshield') return {
       pelvis:V(0,.50,-.05), shoulder:V(0,1.39,-.34), head:V(0,1.86,-.48),
       shoulderL:V(-.20,1.38,-.25), shoulderR:V(.20,1.38,-.43), elbowL:V(-.47,.82,-.60), elbowR:V(.47,.82,-.68), wristL:V(-.58,.09,-.78), wristR:V(.58,.09,-.86),
-      hipL:V(-.14,.44,.05), hipR:V(.14,.44,-.05), kneeL:V(-.46,.77,.47), kneeR:V(.46,.77,.47), ankleL:V(-.86,.08,.78), ankleR:V(.86,.08,.78), toeL:V(-1.06,.06,.91), toeR:V(1.06,.06,.91)
+      hipL:V(-.14,.44,.12), hipR:V(.14,.44,.02), kneeL:V(-.88,.29,.57), kneeR:V(-.05,.34,.57), ankleL:V(-.86,.08,.78), ankleR:V(.86,.08,.78), toeL:V(-1.06,.06,.91), toeR:V(1.06,.06,.91)
     };
     return standingPose(0);
   }
@@ -108,8 +108,8 @@
       return pose;
     }
     if (kind === 'windshield') {
-      pose.kneeL.set(-.88,.29,.57); pose.kneeR.set(-.05,.34,.57);
-      pose.hipL.z = .12; pose.hipR.z = .02;
+      pose.kneeL.set(.05,.34,.57); pose.kneeR.set(.88,.29,.57);
+      pose.hipL.z = -.02; pose.hipR.z = -.12;
       return pose;
     }
     return pose;
