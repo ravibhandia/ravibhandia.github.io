@@ -156,27 +156,32 @@ nav li::before {
     display: none;
 }
 
-body.anti-ai-enabled nav li {
-    animation: antiAiDrift 1.5s ease-in-out infinite alternate;
+body.anti-ai-enabled .anti-ai-target {
+    animation: antiAiDrift var(--anti-duration, 1.5s) ease-in-out infinite var(--anti-direction, alternate);
     opacity: 1;
     position: relative;
     will-change: transform;
+    text-shadow: -5px 3px rgba(201, 168, 124, 0.22), 6px -3px rgba(201, 168, 124, 0.16);
 }
-
-body.anti-ai-enabled nav li:nth-child(2n) { animation-direction: alternate-reverse; animation-duration: 1.9s; }
-body.anti-ai-enabled nav li:nth-child(3n) { animation-duration: 1.25s; }
 
 body.anti-ai-enabled nav a {
     display: inline-block;
     position: relative;
-    text-shadow: -5px 3px rgba(201, 168, 124, 0.22), 6px -3px rgba(201, 168, 124, 0.16);
-    transform: translate(var(--anti-x, 0), var(--anti-y, 0)) rotate(var(--anti-r, 0));
-    transition: transform 0.12s ease-out;
 }
 
 @keyframes antiAiDrift {
-    from { transform: translateX(-7px) rotate(-0.35deg); }
-    to { transform: translateX(9px) rotate(0.45deg); }
+    from {
+        transform: translate(
+            calc(var(--anti-x, 0px) - 7px),
+            calc(var(--anti-y, 0px) - 2px)
+        ) rotate(calc(var(--anti-r, 0deg) - 0.35deg));
+    }
+    to {
+        transform: translate(
+            calc(var(--anti-x, 0px) + 9px),
+            calc(var(--anti-y, 0px) + 2px)
+        ) rotate(calc(var(--anti-r, 0deg) + 0.45deg));
+    }
 }
 
 @media (max-width: 900px) {
@@ -196,11 +201,8 @@ body.anti-ai-enabled nav a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    body.anti-ai-enabled nav li {
+    body.anti-ai-enabled .anti-ai-target {
         animation: none;
-    }
-
-    body.anti-ai-enabled nav a {
         transform: none !important;
     }
 }
