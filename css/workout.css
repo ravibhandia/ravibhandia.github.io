@@ -71,6 +71,12 @@ body {
     color: var(--accent);
 }
 
+.plan-nav .quick-link {
+    background: rgba(201, 168, 124, 0.1);
+    border-color: rgba(201, 168, 124, 0.42);
+    color: var(--text);
+}
+
 .guardrail {
     background: rgba(201, 168, 124, 0.08);
     border: 1px solid rgba(201, 168, 124, 0.3);
@@ -80,7 +86,8 @@ body {
 }
 
 .guardrail,
-.plan-section {
+.plan-section,
+.lifting-card {
     scroll-margin-top: 110px;
 }
 
@@ -295,6 +302,20 @@ body {
     font-size: 22px;
     font-weight: 400;
     margin-bottom: 16px;
+}
+
+.day-label {
+    color: var(--text-muted);
+    display: inline-block;
+    font: 400 10px/1.2 var(--font-mono);
+    letter-spacing: 1px;
+    margin-left: 8px;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.cardio-options {
+    margin-top: 20px;
 }
 
 .training-block {
