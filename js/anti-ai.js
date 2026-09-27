@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('anti-ai-toggle');
     const status = document.getElementById('anti-ai-status');
     const targets = [...document.querySelectorAll(
-        'h1, .bio, nav li, .anti-ai-label, .anti-ai-help, .anti-ai-status, .ny-epigraph'
+        'h1, .bio, nav li, .currently-reading, .anti-ai-label, .anti-ai-help, .anti-ai-status, .ny-epigraph'
     )];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 

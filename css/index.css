@@ -30,6 +30,76 @@ h1 {
     animation: fadeIn 0.6s ease-out 0.1s both;
 }
 
+.currently-reading {
+    margin-top: clamp(40px, 6vw, 64px);
+    max-width: 440px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.65s both;
+}
+
+.currently-reading-label {
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.32);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.currently-reading-link {
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    padding: 18px 2px;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.currently-reading-link:hover,
+.currently-reading-link:focus-visible {
+    border-color: rgba(201, 168, 124, 0.65);
+    color: var(--accent);
+}
+
+.currently-reading-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.currently-reading-copy {
+    display: grid;
+    gap: 5px;
+}
+
+.currently-reading-title {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.currently-reading-meta {
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 0.35px;
+}
+
+.currently-reading-arrow {
+    color: var(--accent);
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+
+.currently-reading-link:hover .currently-reading-arrow,
+.currently-reading-link:focus-visible .currently-reading-arrow {
+    transform: translate(2px, -2px);
+}
+
 .ny-epigraph {
     margin-top: clamp(48px, 7vw, 80px);
     max-width: 440px;
@@ -101,7 +171,7 @@ nav li::before {
     margin-top: clamp(40px, 6vw, 64px);
     max-width: 440px;
     opacity: 0;
-    animation: fadeIn 0.6s ease-out 0.68s both;
+    animation: fadeIn 0.6s ease-out 0.72s both;
 }
 
 .anti-ai-label {
