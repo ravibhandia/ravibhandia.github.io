@@ -59,6 +59,10 @@ h1 {
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
+.currently-reading-link + .currently-reading-link {
+    margin-top: -1px;
+}
+
 .currently-reading-link:hover,
 .currently-reading-link:focus-visible {
     border-color: rgba(201, 168, 124, 0.65);
@@ -73,6 +77,7 @@ h1 {
 .currently-reading-copy {
     display: grid;
     gap: 5px;
+    min-width: 0;
 }
 
 .currently-reading-title {
